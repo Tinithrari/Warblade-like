@@ -21,6 +21,9 @@ import javax.imageio.ImageIO;
  * <p>
  * @author Kevin Glass
  */
+
+
+//TODO Les aliens utilisent une même stratégie de mouvement
 public class SpriteStore {
 	/** The single instance of this class */
 	private static SpriteStore single = new SpriteStore();

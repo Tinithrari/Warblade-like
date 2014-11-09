@@ -1,5 +1,6 @@
 package entities;
 
+import movement.MovementAbstract;
 import base.Game;
 
 /**
@@ -9,7 +10,6 @@ import base.Game;
  */
 public class AlienEntity extends Entity {
 	/** The speed at which the alient moves horizontally */
-	private double moveSpeed = 75;
 	/** The game in which the entity exists */
 	private Game game;
 	
@@ -21,11 +21,9 @@ public class AlienEntity extends Entity {
 	 * @param x The intial x location of this alien
 	 * @param y The intial y location of this alient
 	 */
-	public AlienEntity(Game game,String ref,int x,int y) {
-		super(ref,x,y);
-		
+	public AlienEntity(Game game,String ref, MovementAbstract strategy) {
+		super(ref,strategy);
 		this.game = game;
-		dx = -moveSpeed;
 	}
 
 	/**
@@ -36,12 +34,12 @@ public class AlienEntity extends Entity {
 	public void move(long delta) {
 		// if we have reached the left hand side of the screen and
 		// are moving left then request a logic update 
-		if ((dx < 0) && (x < 10)) {
+		if ((getMoveStrategy().getDx() < 0) && (getMoveStrategy().getX() < 10)) {
 			game.updateLogic();
 		}
 		// and vice vesa, if we have reached the right hand side of 
 		// the screen and are moving right, request a logic update
-		if ((dx > 0) && (x > 750)) {
+		if ((getMoveStrategy().getDx() > 0) && (getMoveStrategy().getX() > 750)) {
 			game.updateLogic();
 		}
 		
@@ -56,12 +54,11 @@ public class AlienEntity extends Entity {
 	public void doLogic() {
 		// swap over horizontal movement and move down the
 		// screen a bit
-		dx = -dx;
-		y += 10;
+		getMoveStrategy().doLogic();
 		
 		// if we've reached the bottom of the screen then the player
 		// dies
-		if (y > 570) {
+		if (getMoveStrategy().getY() > 570) {
 			game.notifyDeath();
 		}
 	}

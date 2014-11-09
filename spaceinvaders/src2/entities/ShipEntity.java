@@ -1,5 +1,6 @@
 package entities;
 
+import movement.MovementAbstract;
 import base.Game;
 
 /**
@@ -16,11 +17,10 @@ public class ShipEntity extends Entity {
 	 *  
 	 * @param game The game in which the ship is being created
 	 * @param ref The reference to the sprite to show for the ship
-	 * @param x The initial x location of the player's ship
-	 * @param y The initial y location of the player's ship
+	 * @param strategy TODO
 	 */
-	public ShipEntity(Game game,String ref,int x,int y) {
-		super(ref,x,y);
+	public ShipEntity(Game game,String ref,MovementAbstract strategy) {
+		super(ref,strategy);
 		
 		this.game = game;
 	}
@@ -34,12 +34,12 @@ public class ShipEntity extends Entity {
 	public void move(long delta) {
 		// if we're moving left and have reached the left hand side
 		// of the screen, don't move
-		if ((dx < 0) && (x < 10)) {
+		if ((getMoveStrategy().getDx() < 0) && (getMoveStrategy().getX() < 10)) {
 			return;
 		}
 		// if we're moving right and have reached the right hand side
 		// of the screen, don't move
-		if ((dx > 0) && (x > 750)) {
+		if ((getMoveStrategy().getDx() > 0) && (getMoveStrategy().getX() > 750)) {
 			return;
 		}
 		

@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import level.Level1;
+import level.LevelInterface;
+import movement.PlayerBulletMovement;
+import movement.PlayerMovement;
 import entities.AlienEntity;
 import entities.Entity;
 import entities.ShipEntity;
@@ -41,6 +45,7 @@ public class Game extends Canvas {
 	/** True if the game is currently "running", i.e. the game loop is looping */
 	private boolean gameRunning = true;
 	
+	private LevelInterface level;
 	/** The list of all the entities that exist in our game */
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
 	
@@ -77,7 +82,7 @@ public class Game extends Canvas {
 	public Game() {
 		// create a frame to contain our game
 		JFrame container = new JFrame("Space Invaders 101");
-		
+		level = new Level1(this);
 		// get hold the content of the frame and set up the resolution of the game
 		JPanel panel = (JPanel) container.getContentPane();
 		panel.setPreferredSize(new Dimension(800,600));
@@ -129,7 +134,6 @@ public class Game extends Canvas {
 		// clear out any existing entities and intialise a new set
 		entities.clear();
 		initEntities();
-		
 		// blank out any keyboard settings we might currently have
 		leftPressed = false;
 		rightPressed = false;
@@ -142,18 +146,11 @@ public class Game extends Canvas {
 	 */
 	private void initEntities() {
 		// create the player ship and place it roughly in the center of the screen
-		ship = new ShipEntity(this,"sprites/ship.gif",370,550);
+		ship = new ShipEntity(this,"sprites/ship.gif",new PlayerMovement(370,550)); //TODO
 		entities.add(ship);
 		
 		// create a block of aliens (3 rows, by 10 aliens, spaced evenly)
-		alienCount = 0;
-		for (int row=0;row<3;row++) {
-			for (int x=0;x<10;x++) {
-				Entity alien = new AlienEntity(this,"sprites/alien.gif",100+(x*50),(50)+row*30);
-				entities.add(alien);
-				alienCount++;
-			}
-		}
+		alienCount = level.initAlien(entities);
 	}
 	
 	/**
@@ -226,7 +223,7 @@ public class Game extends Canvas {
 		
 		// if we waited long enough, create the shot entity, and record the time.
 		lastFire = System.currentTimeMillis();
-		ShotEntity shot = new ShotEntity(this,"sprites/shot.gif",ship.getX()+10,ship.getY()-30);
+		ShotEntity shot = new ShotEntity(this,"sprites/shot.gif",new PlayerBulletMovement(ship.getX()+10,ship.getY()-30));
 		entities.add(shot);
 	}
 	

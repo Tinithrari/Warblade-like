@@ -1,5 +1,6 @@
 package entities;
 
+import movement.MovementAbstract;
 import base.Game;
 
 /**
@@ -9,7 +10,6 @@ import base.Game;
  */
 public class ShotEntity extends Entity {
 	/** The vertical speed at which the players shot moves */
-	private double moveSpeed = -300;
 	/** The game in which this entity exists */
 	private Game game;
 	/** True if this shot has been "used", i.e. its hit something */
@@ -20,15 +20,12 @@ public class ShotEntity extends Entity {
 	 * 
 	 * @param game The game in which the shot has been created
 	 * @param sprite The sprite representing this shot
-	 * @param x The initial x location of the shot
-	 * @param y The initial y location of the shot
+	 * @param strategy TODO
 	 */
-	public ShotEntity(Game game,String sprite,int x,int y) {
-		super(sprite,x,y);
+	public ShotEntity(Game game,String sprite,MovementAbstract strategy) {
+		super(sprite,strategy);
 		
 		this.game = game;
-		
-		dy = moveSpeed;
 	}
 
 	/**
@@ -41,7 +38,7 @@ public class ShotEntity extends Entity {
 		super.move(delta);
 		
 		// if we shot off the screen, remove ourselfs
-		if (y < -100) {
+		if (getMoveStrategy().getY() < -100) {
 			game.removeEntity(this);
 		}
 	}
