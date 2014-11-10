@@ -43,8 +43,14 @@ public class AlienEntity extends Entity {
 			game.updateLogic();
 		}
 		
+		if ((getMoveStrategy().getDy() > 0) && (getMoveStrategy().getY() > 570))
+			game.updateLogic();
+		
+		if ((getMoveStrategy().getDy() < 0) && (getMoveStrategy().getY() < sprite.getHeight()))
+			game.updateLogic();
+		
 		// proceed with normal move
-		super.move(delta);
+		getMoveStrategy().move(delta);
 	}
 	
 	/**

@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 
 import level.Level1;
 import level.LevelInterface;
+import movement.AlienRandomMovement;
 import movement.PlayerBulletMovement;
 import movement.PlayerMovement;
 import entities.AlienEntity;
@@ -196,6 +197,14 @@ public class Game extends Canvas {
 		// reduce the alient count, if there are none left, the player has won!
 		alienCount--;
 		
+		if (alienCount == 5) {
+			for(Entity entity : entities) {
+			    if (entity instanceof AlienEntity) {
+					entity.setMoveStrategy(new AlienRandomMovement(entity.getMoveStrategy().getX(), entity.getMoveStrategy().getY()));
+				}
+			}
+		}
+		
 		if (alienCount == 0) {
 			notifyWin();
 		}
@@ -204,8 +213,9 @@ public class Game extends Canvas {
 		// speed up all the existing aliens
 		for(Entity entity : entities) {
 		    if (entity instanceof AlienEntity) {
-				// speed up by 2%
-				entity.setHorizontalMovement(entity.getHorizontalMovement() * 1.02);
+		    	if (! (entity.getMoveStrategy() instanceof AlienRandomMovement))
+					// speed up by 2%
+					entity.setHorizontalMovement(entity.getHorizontalMovement() * 1.02);
 			}
 		}
 	}
