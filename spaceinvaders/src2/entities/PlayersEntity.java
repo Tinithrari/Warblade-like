@@ -1,10 +1,10 @@
 package entities;
 
-import movement.AbstractMovement;
+import movement.Movement;
 
 public abstract class PlayersEntity extends Entity {
 
-	public PlayersEntity(String ref, AbstractMovement strategy) {
+	public PlayersEntity(String ref, Movement strategy) {
 		super(ref, strategy);
 		// TODO Auto-generated constructor stub
 	}

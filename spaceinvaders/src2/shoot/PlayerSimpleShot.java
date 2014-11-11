@@ -2,11 +2,11 @@ package shoot;
 
 import java.util.ArrayList;
 
-import base.Game;
+import base.Application;
 import movement.PlayerSimpleShotMovement;
 import entities.PlayerShotEntity;
 
-public class PlayerSimpleShot implements ShootStrategy {
+public class PlayerSimpleShot implements PlayerShootStrategy {
 
 	/** The time at which last fired a shot */
 	private long lastFire = 0;
@@ -18,7 +18,7 @@ public class PlayerSimpleShot implements ShootStrategy {
 	}
 
 	@Override
-	public ArrayList<PlayerShotEntity> tryToFire(Game g, double x, double y) {
+	public ArrayList<PlayerShotEntity> tryToFire(Application g, double x, double y) {
 		if (System.currentTimeMillis() - lastFire < firingInterval) {
 			return null;
 		}

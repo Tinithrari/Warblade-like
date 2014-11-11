@@ -1,15 +1,15 @@
 package movement;
 
-public class PlayerMovement extends Movement {
+public class AlienSimpleShotMovement extends Movement {
 
-	public PlayerMovement(double x, double y) {
+	public AlienSimpleShotMovement(double x, double y) {
 		super(x, y);
-		setDx(0);
+		this.setDy(300);
 	}
 
 	@Override
 	public void move(long delta) {
-		setX(getX() + ((delta * getDx()) / 1000));
+		setY(getY() + ((delta * getDy()) / 1000));
 
 	}
 

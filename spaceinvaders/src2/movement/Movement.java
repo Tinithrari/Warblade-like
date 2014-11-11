@@ -1,13 +1,13 @@
 package movement;
 
-public abstract class AbstractMovement {
+public abstract class Movement {
 
 	private double x;
 	private double y;
 	private double dx;
 	private double dy;
 	
-	public AbstractMovement(double x, double y) {
+	public Movement(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}

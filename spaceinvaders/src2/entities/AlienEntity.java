@@ -1,7 +1,10 @@
 package entities;
 
-import movement.AbstractMovement;
-import base.Game;
+import java.util.ArrayList;
+
+import shoot.AlienShootStrategy;
+import movement.Movement;
+import base.Application;
 
 /**
  * An entity which represents one of our space invader aliens.
@@ -11,7 +14,8 @@ import base.Game;
 public class AlienEntity extends EnemyEntity {
 	/** The speed at which the alient moves horizontally */
 	/** The game in which the entity exists */
-	private Game game;
+	private Application game;
+	private AlienShootStrategy attack;
 	
 	/**
 	 * Create a new alien entity
@@ -21,9 +25,10 @@ public class AlienEntity extends EnemyEntity {
 	 * @param x The intial x location of this alien
 	 * @param y The intial y location of this alient
 	 */
-	public AlienEntity(Game game,String ref, AbstractMovement strategy) {
+	public AlienEntity(Application game,String ref, Movement strategy, AlienShootStrategy attack) {
 		super(ref,strategy);
 		this.game = game;
+		this.attack = attack;
 	}
 
 	/**
@@ -70,7 +75,15 @@ public class AlienEntity extends EnemyEntity {
 	}
 	
 	public void fire() {
+		ArrayList<AlienShotEntity> shot = attack.tryToFire(game, getX(), getY());
 		
+		if (shot != null)
+		{
+			for (int i = 0; i < shot.size();i++)
+			{
+				game.getEnemyEntities().add(shot.get(i));
+			}
+		}
 	}
 	
 	/**

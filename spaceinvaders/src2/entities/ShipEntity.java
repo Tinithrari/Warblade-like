@@ -2,9 +2,9 @@ package entities;
 
 import java.util.ArrayList;
 
-import movement.AbstractMovement;
-import base.Game;
-import shoot.ShootStrategy;
+import movement.Movement;
+import base.Application;
+import shoot.PlayerShootStrategy;
 import shoot.PlayerSimpleShot;
 
 /**
@@ -14,8 +14,8 @@ import shoot.PlayerSimpleShot;
  */
 public class ShipEntity extends PlayersEntity {
 	/** The game in which the ship exists */
-	private Game game;
-	private ShootStrategy shootStrategy;
+	private Application game;
+	private PlayerShootStrategy shootStrategy;
 	
 	/**
 	 * Create a new entity to represent the players ship
@@ -24,7 +24,7 @@ public class ShipEntity extends PlayersEntity {
 	 * @param ref The reference to the sprite to show for the ship
 	 * @param strategy TODO
 	 */
-	public ShipEntity(Game game,String ref,AbstractMovement strategy) {
+	public ShipEntity(Application game,String ref,Movement strategy) {
 		super(ref,strategy);
 		
 		this.game = game;
@@ -59,7 +59,7 @@ public class ShipEntity extends PlayersEntity {
 		if (shot != null)
 		{
 			for (int i = 0; i < shot.size(); i++)
-				game.getEntities().add(shot.get(i));
+				game.getPlayersEntities().add(shot.get(i));
 		}
 	}
 	

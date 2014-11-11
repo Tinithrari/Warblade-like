@@ -1,6 +1,6 @@
 package movement;
 
-public class ClassicMovement extends AbstractMovement{
+public class ClassicMovement extends Movement{
 	
 	public ClassicMovement(double x, double y) {
 		super(x,y);

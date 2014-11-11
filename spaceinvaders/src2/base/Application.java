@@ -1,3 +1,5 @@
+//Il s'agit de l'ancienne classe Game renommée par mes soins
+
 package base;
 
 import java.awt.Canvas;
@@ -15,7 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import level.Level1;
-import level.LevelInterface;
+import level.Level;
 import movement.AlienRandomMovement;
 import movement.PlayerSimpleShotMovement;
 import movement.PlayerMovement;
@@ -41,14 +43,14 @@ import entities.PlayerShotEntity;
  * 
  * @author Kevin Glass
  */
-public class Game extends Canvas {
+public class Application extends Canvas {
 	/** The stragey that allows us to use accelerate page flipping */
 	private BufferStrategy strategy;
 	
 	/** True if the game is currently "running", i.e. the game loop is looping */
 	private boolean gameRunning = true;
 	
-	private LevelInterface level;
+	private Level level;
 	/** The list of all the entities that exist in our game */
 	private ArrayList<PlayersEntity> playerEntities = new ArrayList<PlayersEntity>();
 	private ArrayList<EnemyEntity> enemyEntities = new ArrayList<EnemyEntity>();
@@ -78,7 +80,7 @@ public class Game extends Canvas {
 	/**
 	 * Construct our game and set it running.
 	 */
-	public Game() {
+	public Application() {
 		// create a frame to contain our game
 		JFrame container = new JFrame("Space Invaders 101");
 		level = new Level1(this);
@@ -199,7 +201,8 @@ public class Game extends Canvas {
 		if (alienCount == 5) {
 			for(EnemyEntity entity : enemyEntities) 
 			{
-				entity.setMoveStrategy(new AlienRandomMovement(entity.getMoveStrategy().getX(), entity.getMoveStrategy().getY()));
+				if (! entity.isABullet())
+					entity.setMoveStrategy(new AlienRandomMovement(entity.getMoveStrategy().getX(), entity.getMoveStrategy().getY()));
 			}
 		}
 		
@@ -252,12 +255,17 @@ public class Game extends Canvas {
 			g.setColor(Color.black);
 			g.fillRect(0,0,800,600);
 			
+			
+			
 			// cycle round asking each entity to move itself
 			if (!waitingForKeyPress) {
 				for(PlayersEntity entity : playerEntities)
 					entity.move(delta);
-				for(EnemyEntity entity : enemyEntities)
-					entity.move(delta);
+				for(int i = 0; i < enemyEntities.size(); i++)
+				{
+					enemyEntities.get(i).move(delta);
+					enemyEntities.get(i).fire();
+				}
 			}
 			
 			// cycle round drawing all the entities we have in the game
@@ -285,6 +293,8 @@ public class Game extends Canvas {
 			// remove any entity that has been marked for clear up
 			enemyEntities.removeAll(removeList);
 			playerEntities.removeAll(removeList);
+			if (removeList.contains(ship))
+				notifyDeath();
 			removeList.clear();
 
 			// if a game event has indicated that game logic should
@@ -338,9 +348,17 @@ public class Game extends Canvas {
 		}
 	}
 	
-	public ArrayList<PlayersEntity> getEntities() {
+	public ArrayList<PlayersEntity> getPlayersEntities() {
 		return playerEntities;
 	}
+	
+	
+
+	public ArrayList<EnemyEntity> getEnemyEntities() {
+		return enemyEntities;
+	}
+
+
 
 	/**
 	 * A class to handle keyboard input from the user. The class
@@ -447,7 +465,7 @@ public class Game extends Canvas {
 	 * @param argv The arguments that are passed into our game
 	 */
 	public static void main(String argv[]) {
-		Game g =new Game();
+		Application g =new Application();
 
 		// Start the main game loop, note: this method will not
 		// return until the game has finished running. Hence we are

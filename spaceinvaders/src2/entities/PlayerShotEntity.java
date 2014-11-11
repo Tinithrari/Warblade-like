@@ -1,7 +1,7 @@
 package entities;
 
-import movement.AbstractMovement;
-import base.Game;
+import movement.Movement;
+import base.Application;
 
 /**
  * An entity representing a shot fired by the player's ship
@@ -11,7 +11,7 @@ import base.Game;
 public class PlayerShotEntity extends PlayersEntity {
 	/** The vertical speed at which the players shot moves */
 	/** The game in which this entity exists */
-	private Game game;
+	private Application game;
 	/** True if this shot has been "used", i.e. its hit something */
 	private boolean used = false;
 	
@@ -22,7 +22,7 @@ public class PlayerShotEntity extends PlayersEntity {
 	 * @param sprite The sprite representing this shot
 	 * @param strategy TODO
 	 */
-	public PlayerShotEntity(Game game,String sprite,AbstractMovement strategy) {
+	public PlayerShotEntity(Application game,String sprite,Movement strategy) {
 		super(sprite,strategy);
 		
 		this.game = game;
@@ -60,7 +60,8 @@ public class PlayerShotEntity extends PlayersEntity {
 		game.removeEntity(other);
 		
 		// notify the game that the alien has been killed
-		game.notifyAlienKilled();
+		if (!other.isABullet())
+			game.notifyAlienKilled();
 		used = true;
 		
 	}

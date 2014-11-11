@@ -3,7 +3,7 @@ package entities;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import movement.AbstractMovement;
+import movement.Movement;
 import base.Sprite;
 import base.SpriteStore;
 
@@ -24,7 +24,7 @@ public abstract class Entity {
 	
 	protected Sprite sprite;
 	/** The current speed of this entity horizontally (pixels/sec) */
-	private AbstractMovement moveStrategy;
+	private Movement moveStrategy;
 	/** The rectangle used for this entity during collisions  resolution */
 	private Rectangle me = new Rectangle();
 	/** The rectangle used for other entities during collision resolution */
@@ -36,7 +36,7 @@ public abstract class Entity {
 	 * @param ref The reference to the image to be displayed for this entity
 	 * @param strategy TODO
 	 */
-	public Entity(String ref,AbstractMovement strategy) {
+	public Entity(String ref,Movement strategy) {
 		this.sprite = SpriteStore.get().getSprite(ref);
 		moveStrategy = strategy;
 	}
@@ -133,11 +133,11 @@ public abstract class Entity {
 		return me.intersects(him);
 	}
 	
-	public AbstractMovement getMoveStrategy() {
+	public Movement getMoveStrategy() {
 		return moveStrategy;
 	}
 
-	public void setMoveStrategy(AbstractMovement moveStrategy) {
+	public void setMoveStrategy(Movement moveStrategy) {
 		this.moveStrategy = moveStrategy;
 	}
 }
