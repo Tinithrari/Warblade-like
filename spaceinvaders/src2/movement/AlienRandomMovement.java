@@ -1,6 +1,6 @@
 package movement;
 
-public class AlienRandomMovement extends MovementAbstract {
+public class AlienRandomMovement extends AbstractMovement {
 
 	private double delta;
 	private double intervalle;

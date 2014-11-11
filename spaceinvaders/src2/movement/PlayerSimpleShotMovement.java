@@ -1,8 +1,8 @@
 package movement;
 
-public class PlayerBulletMovement extends MovementAbstract {
+public class PlayerSimpleShotMovement extends AbstractMovement {
 
-	public PlayerBulletMovement(double x, double y) {
+	public PlayerSimpleShotMovement(double x, double y) {
 		super(x, y);
 		this.setDy(-300);
 	}

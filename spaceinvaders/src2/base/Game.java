@@ -17,12 +17,14 @@ import javax.swing.JPanel;
 import level.Level1;
 import level.LevelInterface;
 import movement.AlienRandomMovement;
-import movement.PlayerBulletMovement;
+import movement.PlayerSimpleShotMovement;
 import movement.PlayerMovement;
 import entities.AlienEntity;
+import entities.EnemyEntity;
 import entities.Entity;
+import entities.PlayersEntity;
 import entities.ShipEntity;
-import entities.ShotEntity;
+import entities.PlayerShotEntity;
 
 /**
  * The main hook of our game. This class with both act as a manager
@@ -48,19 +50,15 @@ public class Game extends Canvas {
 	
 	private LevelInterface level;
 	/** The list of all the entities that exist in our game */
-	private ArrayList<Entity> entities = new ArrayList<Entity>();
-	
+	private ArrayList<PlayersEntity> playerEntities = new ArrayList<PlayersEntity>();
+	private ArrayList<EnemyEntity> enemyEntities = new ArrayList<EnemyEntity>();
 	/** The list of entities that need to be removed from the game this loop */
 	private ArrayList<Entity> removeList = new ArrayList<Entity>();
 	
 	/** The entity representing the player */
-	private Entity ship;
+	private PlayersEntity ship;
 	/** The speed at which the player's ship should move (pixels/sec) */
 	private double moveSpeed = 300;
-	/** The time at which last fired a shot */
-	private long lastFire = 0;
-	/** The interval between our players shot (ms) */
-	private long firingInterval = 500;
 	/** The number of aliens left on the screen */
 	private int alienCount;
 	
@@ -133,7 +131,8 @@ public class Game extends Canvas {
 	 */
 	private void startGame() {
 		// clear out any existing entities and intialise a new set
-		entities.clear();
+		playerEntities.clear();
+		enemyEntities.clear();
 		initEntities();
 		// blank out any keyboard settings we might currently have
 		leftPressed = false;
@@ -148,10 +147,10 @@ public class Game extends Canvas {
 	private void initEntities() {
 		// create the player ship and place it roughly in the center of the screen
 		ship = new ShipEntity(this,"sprites/ship.gif",new PlayerMovement(370,550)); //TODO
-		entities.add(ship);
+		playerEntities.add(ship);
 		
 		// create a block of aliens (3 rows, by 10 aliens, spaced evenly)
-		alienCount = level.initAlien(entities);
+		alienCount = level.initAlien(enemyEntities);
 	}
 	
 	/**
@@ -198,10 +197,9 @@ public class Game extends Canvas {
 		alienCount--;
 		
 		if (alienCount == 5) {
-			for(Entity entity : entities) {
-			    if (entity instanceof AlienEntity) {
-					entity.setMoveStrategy(new AlienRandomMovement(entity.getMoveStrategy().getX(), entity.getMoveStrategy().getY()));
-				}
+			for(EnemyEntity entity : enemyEntities) 
+			{
+				entity.setMoveStrategy(new AlienRandomMovement(entity.getMoveStrategy().getX(), entity.getMoveStrategy().getY()));
 			}
 		}
 		
@@ -211,11 +209,11 @@ public class Game extends Canvas {
 		
 		// if there are still some aliens left then they all need to get faster, so
 		// speed up all the existing aliens
-		for(Entity entity : entities) {
-		    if (entity instanceof AlienEntity) {
-		    	if (! (entity.getMoveStrategy() instanceof AlienRandomMovement))
-					// speed up by 2%
-					entity.setHorizontalMovement(entity.getHorizontalMovement() * 1.02);
+		if (alienCount > 5)
+		{
+			for(EnemyEntity entity : enemyEntities) 
+			{
+				entity.setHorizontalMovement(entity.getHorizontalMovement() * 1.02);
 			}
 		}
 	}
@@ -225,17 +223,6 @@ public class Game extends Canvas {
 	 * since we must first check that the player can fire at this 
 	 * point, i.e. has he/she waited long enough between shots
 	 */
-	public void tryToFire() {
-		// check that we have waiting long enough to fire
-		if (System.currentTimeMillis() - lastFire < firingInterval) {
-			return;
-		}
-		
-		// if we waited long enough, create the shot entity, and record the time.
-		lastFire = System.currentTimeMillis();
-		ShotEntity shot = new ShotEntity(this,"sprites/shot.gif",new PlayerBulletMovement(ship.getX()+10,ship.getY()-30));
-		entities.add(shot);
-	}
 	
 	/**
 	 * The main game loop. This loop is running during all game
@@ -267,21 +254,26 @@ public class Game extends Canvas {
 			
 			// cycle round asking each entity to move itself
 			if (!waitingForKeyPress) {
-				for(Entity entity : entities)
+				for(PlayersEntity entity : playerEntities)
+					entity.move(delta);
+				for(EnemyEntity entity : enemyEntities)
 					entity.move(delta);
 			}
 			
 			// cycle round drawing all the entities we have in the game
-            for(Entity entity : entities)
+            for(PlayersEntity entity : playerEntities)
 				entity.draw(g);
+            
+            for (EnemyEntity entity : enemyEntities)
+            	entity.draw(g);
 			
 			// brute force collisions, compare every entity against
 			// every other entity. If any of them collide notify 
 			// both entities that the collision has occured
-			for (int p=0;p<entities.size();p++) {
-				for (int s=p+1;s<entities.size();s++) {
-					Entity me = entities.get(p);
-					Entity him = entities.get(s);
+			for (int p=0;p<playerEntities.size();p++) {
+				for (int s=0;s<enemyEntities.size();s++) {
+					PlayersEntity me = playerEntities.get(p);
+					EnemyEntity him = enemyEntities.get(s);
 					
 					if (me.collidesWith(him)) {
 						me.collidedWith(him);
@@ -291,14 +283,19 @@ public class Game extends Canvas {
 			}
 			
 			// remove any entity that has been marked for clear up
-			entities.removeAll(removeList);
+			enemyEntities.removeAll(removeList);
+			playerEntities.removeAll(removeList);
 			removeList.clear();
 
 			// if a game event has indicated that game logic should
 			// be resolved, cycle round every entity requesting that
 			// their personal logic should be considered.
 			if (logicRequiredThisLoop) {
-			    for(Entity entity : entities) {
+			    for(EnemyEntity entity : enemyEntities) {
+					entity.doLogic();
+				}
+			    
+			    for(PlayersEntity entity : playerEntities) {
 					entity.doLogic();
 				}
 				
@@ -331,7 +328,7 @@ public class Game extends Canvas {
 			
 			// if we're pressing fire, attempt to fire
 			if (firePressed) {
-				tryToFire();
+				((ShipEntity) ship).tryToFire();
 			}
 			
 			// finally pause for a bit. Note: this should run us at about
@@ -341,6 +338,10 @@ public class Game extends Canvas {
 		}
 	}
 	
+	public ArrayList<PlayersEntity> getEntities() {
+		return playerEntities;
+	}
+
 	/**
 	 * A class to handle keyboard input from the user. The class
 	 * handles both dynamic input during game play, i.e. left/right 

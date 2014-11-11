@@ -1,16 +1,21 @@
 package entities;
 
-import movement.MovementAbstract;
+import java.util.ArrayList;
+
+import movement.AbstractMovement;
 import base.Game;
+import shoot.ShootStrategy;
+import shoot.PlayerSimpleShot;
 
 /**
  * The entity that represents the players ship
  * 
  * @author Kevin Glass
  */
-public class ShipEntity extends Entity {
+public class ShipEntity extends PlayersEntity {
 	/** The game in which the ship exists */
 	private Game game;
+	private ShootStrategy shootStrategy;
 	
 	/**
 	 * Create a new entity to represent the players ship
@@ -19,10 +24,12 @@ public class ShipEntity extends Entity {
 	 * @param ref The reference to the sprite to show for the ship
 	 * @param strategy TODO
 	 */
-	public ShipEntity(Game game,String ref,MovementAbstract strategy) {
+	public ShipEntity(Game game,String ref,AbstractMovement strategy) {
 		super(ref,strategy);
 		
 		this.game = game;
+		
+		shootStrategy = new PlayerSimpleShot();
 	}
 	
 	/**
@@ -46,12 +53,23 @@ public class ShipEntity extends Entity {
 		super.move(delta);
 	}
 	
+	public void tryToFire(){
+		ArrayList<PlayerShotEntity> shot = shootStrategy.tryToFire(game, getMoveStrategy().getX(), getMoveStrategy().getY());
+		
+		if (shot != null)
+		{
+			for (int i = 0; i < shot.size(); i++)
+				game.getEntities().add(shot.get(i));
+		}
+	}
+	
+	
 	/**
 	 * Notification that the player's ship has collided with something
 	 * 
 	 * @param other The entity with which the ship has collided
 	 */
-	public void collidedWith(Entity other) {
+	public void collidedWith(EnemyEntity other) {
 		// if its an alien, notify the game that the player
 		// is dead
 		if (other instanceof AlienEntity) {

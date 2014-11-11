@@ -1,6 +1,6 @@
 package entities;
 
-import movement.MovementAbstract;
+import movement.AbstractMovement;
 import base.Game;
 
 /**
@@ -8,7 +8,7 @@ import base.Game;
  * 
  * @author Kevin Glass
  */
-public class ShotEntity extends Entity {
+public class PlayerShotEntity extends PlayersEntity {
 	/** The vertical speed at which the players shot moves */
 	/** The game in which this entity exists */
 	private Game game;
@@ -22,7 +22,7 @@ public class ShotEntity extends Entity {
 	 * @param sprite The sprite representing this shot
 	 * @param strategy TODO
 	 */
-	public ShotEntity(Game game,String sprite,MovementAbstract strategy) {
+	public PlayerShotEntity(Game game,String sprite,AbstractMovement strategy) {
 		super(sprite,strategy);
 		
 		this.game = game;
@@ -49,23 +49,20 @@ public class ShotEntity extends Entity {
 	 * 
 	 * @parma other The other entity with which we've collided
 	 */
-	public void collidedWith(Entity other) {
+	public void collidedWith(EnemyEntity other) {
 		// prevents double kills, if we've already hit something,
 		// don't collide
 		if (used) {
 			return;
 		}
 		
-		// if we've hit an alien, kill it!
-		if (other instanceof AlienEntity) {
-			// remove the affected entities
-			game.removeEntity(this);
-			game.removeEntity(other);
-			
-			// notify the game that the alien has been killed
-			game.notifyAlienKilled();
-			used = true;
-		}
+		game.removeEntity(this);
+		game.removeEntity(other);
+		
+		// notify the game that the alien has been killed
+		game.notifyAlienKilled();
+		used = true;
+		
 	}
 
     @Override

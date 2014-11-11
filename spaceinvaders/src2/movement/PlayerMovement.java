@@ -1,6 +1,6 @@
 package movement;
 
-public class PlayerMovement extends MovementAbstract {
+public class PlayerMovement extends AbstractMovement {
 
 	public PlayerMovement(double x, double y) {
 		super(x, y);

@@ -1,6 +1,6 @@
 package entities;
 
-import movement.MovementAbstract;
+import movement.AbstractMovement;
 import base.Game;
 
 /**
@@ -8,7 +8,7 @@ import base.Game;
  * 
  * @author Kevin Glass
  */
-public class AlienEntity extends Entity {
+public class AlienEntity extends EnemyEntity {
 	/** The speed at which the alient moves horizontally */
 	/** The game in which the entity exists */
 	private Game game;
@@ -21,7 +21,7 @@ public class AlienEntity extends Entity {
 	 * @param x The intial x location of this alien
 	 * @param y The intial y location of this alient
 	 */
-	public AlienEntity(Game game,String ref, MovementAbstract strategy) {
+	public AlienEntity(Game game,String ref, AbstractMovement strategy) {
 		super(ref,strategy);
 		this.game = game;
 	}
@@ -69,12 +69,16 @@ public class AlienEntity extends Entity {
 		}
 	}
 	
+	public void fire() {
+		
+	}
+	
 	/**
 	 * Notification that this alien has collided with another entity
 	 * 
 	 * @param other The other entity
 	 */
-	public void collidedWith(Entity other) {
+	public void collidedWith(PlayersEntity other) {
 		// collisions with aliens are handled elsewhere
 	}
 }

@@ -2,8 +2,9 @@ package level;
 
 import java.util.ArrayList;
 
-import entities.Entity;
+import entities.EnemyEntity;
+
 
 public interface LevelInterface {
-	public int initAlien(ArrayList<Entity> entities);
+	public int initAlien(ArrayList<EnemyEntity> playerEntities);
 }
