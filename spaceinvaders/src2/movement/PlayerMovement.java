@@ -2,6 +2,8 @@ package movement;
 
 public class PlayerMovement extends Movement {
 
+	private double speed = 300;
+	
 	public PlayerMovement(double x, double y) {
 		super(x, y);
 		setDx(0);
@@ -18,5 +20,15 @@ public class PlayerMovement extends Movement {
 		// TODO Auto-generated method stub
 
 	}
+
+	public double getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+	
+	
 
 }
