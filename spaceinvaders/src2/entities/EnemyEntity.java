@@ -11,7 +11,7 @@ public abstract class EnemyEntity extends Entity {
 	
 	public abstract void collidedWith(PlayerEntity other);
 	public abstract void fire();
-	public boolean isABullet() {
+	public boolean isNotAMonster() {
 		return false;
 	}
 }

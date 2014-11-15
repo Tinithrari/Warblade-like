@@ -2,7 +2,7 @@ package entities;
 
 import entityManager.GameScene;
 import movement.Movement;
-import base.Deprecated;
+import movement.NoMovement;
 
 /**
  * An entity representing a shot fired by the player's ship
@@ -56,8 +56,9 @@ public class PlayerShotEntity extends PlayerEntity {
 		gameScene.removeEntity(other);
 		
 		// notify the game that the alien has been killed
-		if (!other.isABullet())
+		if (!other.isNotAMonster())
 			gameScene.notifyEnemyKilled();
+		gameScene.getLevel().getEnemyEntities().add(new ExplosionEntity(gameScene, "sprites/explosion.png", new NoMovement(other.getX() - 60, other.getY() - 60)));
 		used = true;
 		
 	}

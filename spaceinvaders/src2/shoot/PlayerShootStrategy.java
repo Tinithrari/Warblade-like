@@ -2,7 +2,6 @@ package shoot;
 
 import java.util.ArrayList;
 
-import base.Deprecated;
 import entities.PlayerShotEntity;
 import entityManager.GameScene;
 

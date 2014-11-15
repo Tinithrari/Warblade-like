@@ -1,9 +1,7 @@
 package level;
 
-import java.awt.Graphics;
 import java.util.ArrayList;
 
-import org.jsfml.graphics.RenderTarget;
 import org.jsfml.graphics.RenderWindow;
 
 import entities.EnemyEntity;

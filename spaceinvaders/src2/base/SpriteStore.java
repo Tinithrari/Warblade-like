@@ -1,17 +1,8 @@
 package base;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.net.URL;
-import java.nio.file.Paths;
 import java.util.HashMap;
 
-import sprites.*;
-
-import org.jsfml.graphics.ConstTexture;
-import org.jsfml.graphics.Sprite;
 import org.jsfml.graphics.Texture;
 
 /**
@@ -41,7 +32,7 @@ public class SpriteStore {
 	}
 	
 	/** The cached sprite map, from reference to sprite instance */
-	private HashMap sprites = new HashMap();
+	private HashMap<String,Texture> sprites = new HashMap<String,Texture>();
 	
 	/**
 	 * Retrieve a sprite from the store

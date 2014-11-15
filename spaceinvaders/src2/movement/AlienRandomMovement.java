@@ -1,15 +1,12 @@
 package movement;
 
-import level.Level;
-
 public class AlienRandomMovement extends Movement {
 
 	private long delta;
 	private float intervalle;
 	private long lastInvoke;
-	private Level level;
 	
-	public AlienRandomMovement(float x, float y, Level level) {
+	public AlienRandomMovement(float x, float y) {
 		super(x, y);
 		intervalle = (float) (Math.random() * 1000);
 		
@@ -17,8 +14,6 @@ public class AlienRandomMovement extends Movement {
 		setDy((float) ((Math.random() * 300) - 150));
 		
 		lastInvoke = System.currentTimeMillis();
-		
-		this.level = level;
 	}
 
 	@Override

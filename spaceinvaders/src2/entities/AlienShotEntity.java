@@ -1,7 +1,6 @@
 package entities;
 
 import entityManager.GameScene;
-import base.Deprecated;
 import movement.Movement;
 
 public class AlienShotEntity extends EnemyEntity {
@@ -50,7 +49,7 @@ public class AlienShotEntity extends EnemyEntity {
 	}
 
 	@Override
-	public boolean isABullet() {
+	public boolean isNotAMonster() {
 		// TODO Auto-generated method stub
 		return true;
 	}

@@ -2,10 +2,11 @@ package entities;
 
 import java.util.ArrayList;
 
+import org.jsfml.audio.Sound;
+
 import entityManager.GameScene;
 import shoot.AlienShootStrategy;
 import movement.Movement;
-import base.Deprecated;
 import base.SoundStore;
 
 /**
@@ -18,6 +19,7 @@ public class AlienEntity extends EnemyEntity {
 	/** The game in which the entity exists */
 	private GameScene gameScene;
 	private AlienShootStrategy attack;
+	private Sound player;
 	
 	/**
 	 * Create a new alien entity
@@ -31,6 +33,7 @@ public class AlienEntity extends EnemyEntity {
 		super(ref,strategy);
 		this.gameScene = gameScene;
 		this.attack = attack;
+		player = new Sound();
 	}
 
 	/**
@@ -58,7 +61,8 @@ public class AlienEntity extends EnemyEntity {
 			for (int i = 0; i < shot.size();i++)
 			{
 				gameScene.getLevel().getEnemyEntities().add(shot.get(i));
-				gameScene.getSoundList().add(SoundStore.get().getSprite("sound/laser.wav"));
+				player.setBuffer(SoundStore.get().getSound("sound/laser.wav"));
+				player.play();
 			}
 		}
 	}
@@ -69,6 +73,6 @@ public class AlienEntity extends EnemyEntity {
 	 * @param other The other entity
 	 */
 	public void collidedWith(PlayerEntity other) {
-
+		gameScene.getRemoveList().add(other);
 	}
 }

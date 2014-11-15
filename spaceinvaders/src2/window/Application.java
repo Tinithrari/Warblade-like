@@ -1,7 +1,6 @@
 package window;
 
 import org.jsfml.graphics.Color;
-import org.jsfml.graphics.RenderTarget;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.window.VideoMode;
 import org.jsfml.window.WindowStyle;
@@ -9,6 +8,7 @@ import org.jsfml.window.event.Event;
 import org.jsfml.window.event.Event.Type;
 
 import entityManager.GameScene;
+import entityManager.MenuScene;
 import entityManager.Scene;
 
 public class Application {
@@ -19,7 +19,7 @@ public class Application {
 	public Application() {
 		window = new RenderWindow(new VideoMode(800, 600, 32), "Warblade-like", WindowStyle.NONE | WindowStyle.TITLEBAR | WindowStyle.CLOSE);
 		window.setFramerateLimit(60);
-		scene = new GameScene();
+		scene = new MenuScene();
 	}
 	
 	public void processEvent() {
@@ -30,19 +30,29 @@ public class Application {
                 window.close();
         }
         
-		scene.processEvent();
+		scene.processEvent(this);
 	}
 	
 	public void update(long delta) {
 		scene.update(delta);
 	}
 	
+	
+	
+	public RenderWindow getWindow() {
+		return window;
+	}
+
 	public void render() {
 		window.clear(Color.BLACK);
 		scene.render(window);
 		window.display();
 	}
 	
+	public void setScene(Scene scene) {
+		this.scene = scene;
+	}
+
 	public void run () {
 		long time = System.currentTimeMillis();
 		while(window.isOpen())

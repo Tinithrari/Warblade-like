@@ -1,14 +1,11 @@
 package movement;
 
-import level.Level;
-
 public abstract class Movement {
 
 	private float x;
 	private float y;
 	private float dx;
 	private float dy;
-	private Level level;
 	
 	public Movement(float x, float y) {
 		this.x = x;

@@ -1,7 +1,7 @@
 package level;
 
-import org.jsfml.graphics.RenderWindow;
-
+import org.jsfml.audio.Sound;
+import base.SoundStore;
 import shoot.AlienSimpleShot;
 import movement.AlienRandomMovement;
 import movement.ClassicMovement;
@@ -14,9 +14,11 @@ public class Level1 extends Level {
 	private boolean moveChanged = false;
 	
 	private GameScene gameScene;
+	private Sound player;
 
 	public Level1(GameScene gameScene) {
 		this.gameScene = gameScene;
+		player = new Sound();
 	}
 
 	@Override
@@ -36,17 +38,11 @@ public class Level1 extends Level {
 		if (getNbEnemy() == 5 && !moveChanged) {
 			for(EnemyEntity entity : getEnemyEntities()) 
 			{
-				if (! entity.isABullet()){
-					entity.setMoveStrategy(new AlienRandomMovement(entity.getMoveStrategy().getX(), entity.getMoveStrategy().getY(), this));
+				if (! entity.isNotAMonster()){
+					entity.setMoveStrategy(new AlienRandomMovement(entity.getMoveStrategy().getX(), entity.getMoveStrategy().getY()));
 					moveChanged = true;
 				}
 			}
-		}
-		
-		//TODO nb ennemis à 0
-		if (getNbEnemy() == 0)
-		{
-			System.exit(0);
 		}
 	}
 
@@ -73,15 +69,17 @@ public class Level1 extends Level {
 	public void notifyEnemyKilled() {
 		// TODO Auto-generated method stub
 		super.notifyEnemyKilled();
-		
+		player.setBuffer(SoundStore.get().getSound("sound/explosion.wav"));
+		player.play();
 		if (getNbEnemy() > 5)
 		{
 			for(EnemyEntity entity : getEnemyEntities()) 
 			{
-				entity.setHorizontalMovement((float) (entity.getHorizontalMovement() * 1.02));
+				if (!entity.isNotAMonster())
+				{
+					entity.setHorizontalMovement((float) (entity.getHorizontalMovement() * 1.02));
+				}
 			}
 		}
 	}
-
-	
 }

@@ -3,20 +3,18 @@ package base;
 import java.io.IOException;
 import java.util.HashMap;
 
-import org.jsfml.audio.Sound;
 import org.jsfml.audio.SoundBuffer;
-import org.jsfml.graphics.Texture;
 
 public class SoundStore {
 	
 	private static SoundStore single = new SoundStore();
-	private HashMap sounds = new HashMap();
+	private HashMap<String,SoundBuffer> sounds = new HashMap<String,SoundBuffer>();
 	
 	public static SoundStore get() {
 		return single;
 	}
 	
-	public SoundBuffer getSprite(String ref) {
+	public SoundBuffer getSound(String ref) {
 		
 		if (sounds.get(ref) == null) {
 			try {

@@ -4,9 +4,6 @@ import java.awt.Rectangle;
 
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
-import org.jsfml.graphics.Texture;
-import org.jsfml.system.Vector2f;
-
 import movement.Movement;
 import base.SpriteStore;
 
@@ -32,7 +29,6 @@ public abstract class Entity {
 	private Rectangle me = new Rectangle();
 	/** The rectangle used for other entities during collision resolution */
 	private Rectangle him = new Rectangle();
-	private String ref;
 	
 	/**
 	 * Construct a entity based on a sprite image and a location.
@@ -44,7 +40,6 @@ public abstract class Entity {
 		this.sprite = new Sprite();
 		moveStrategy = strategy;
 		sprite.setPosition(getX(), getY());
-		this.ref = ref;
 		sprite.setTexture(SpriteStore.get().getSprite(ref));
 		sprite.setPosition(getX(),getY()); 
 	}
@@ -126,8 +121,8 @@ public abstract class Entity {
 	 * 
 	 * @return The y location of this entity
 	 */
-	public int getY() {
-		return (int) moveStrategy.getY();
+	public float getY() {
+		return moveStrategy.getY();
 	}
 	
 	/**

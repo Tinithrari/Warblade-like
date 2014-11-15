@@ -10,11 +10,11 @@ import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.window.Keyboard;
 
+import window.Application;
 import base.SpriteStore;
 import level.Level;
 import level.Level1;
 import movement.PlayerMovement;
-import entities.EnemyEntity;
 import entities.Entity;
 import entities.PlayerEntity;
 import entities.ShipEntity;
@@ -46,7 +46,7 @@ public class GameScene implements Scene {
 	}
 
 	@Override
-	public void processEvent() {
+	public void processEvent(Application app) {
 		
 		ship.setHorizontalMovement(0);
 		
@@ -67,22 +67,25 @@ public class GameScene implements Scene {
 		
 		for (PlayerEntity me : playerEntities)
 		{
-			for (EnemyEntity him : level.getEnemyEntities())
+			for (int i = 0; i < level.getEnemyEntities().size(); i++)
 			{
-				if (me.collidesWith(him)) {
-					me.collidedWith(him);
-					him.collidedWith(me);
+				if (me.collidesWith(level.getEnemyEntities().get(i))) {
+					me.collidedWith(level.getEnemyEntities().get(i));
+					level.getEnemyEntities().get(i).collidedWith(me);
 				}
 			}
 		}
 		
 		level.processEvent();
+		
+		if (removeList.contains(ship) || level.getNbEnemy() == 0)
+		{
+			app.setScene(new MenuScene());
+		}
 	}
 
 	@Override
 	public void update(long delta) {
-		if (removeList.contains(ship))
-			System.exit(0);
 		
 		playerEntities.removeAll(removeList);
 		level.getEnemyEntities().removeAll(removeList);

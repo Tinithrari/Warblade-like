@@ -2,9 +2,10 @@ package entities;
 
 import java.util.ArrayList;
 
+import org.jsfml.audio.Sound;
+
 import entityManager.GameScene;
 import movement.Movement;
-import base.Deprecated;
 import base.SoundStore;
 import shoot.PlayerShootStrategy;
 import shoot.PlayerSimpleShot;
@@ -18,6 +19,7 @@ public class ShipEntity extends PlayerEntity {
 	/** The game in which the ship exists */
 	private GameScene gameScene;
 	private PlayerShootStrategy shootStrategy;
+	private Sound player;
 	
 	/**
 	 * Create a new entity to represent the players ship
@@ -32,6 +34,8 @@ public class ShipEntity extends PlayerEntity {
 		this.gameScene = gameScene;
 		
 		shootStrategy = new PlayerSimpleShot();
+		
+		player = new Sound();
 	}
 	
 	/**
@@ -49,7 +53,8 @@ public class ShipEntity extends PlayerEntity {
 			for (int i = 0; i < shot.size(); i++)
 			{
 				gameScene.getPlayerEntities().add(shot.get(i));
-				gameScene.getSoundList().add(SoundStore.get().getSprite("sound/laser1.wav"));
+				player.setBuffer(SoundStore.get().getSound("sound/laser1.wav"));
+				player.play();
 			}
 		}
 	}

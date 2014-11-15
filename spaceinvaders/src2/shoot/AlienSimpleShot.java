@@ -3,7 +3,6 @@ package shoot;
 import java.util.ArrayList;
 
 import movement.AlienSimpleShotMovement;
-import base.Deprecated;
 import entities.AlienShotEntity;
 import entityManager.GameScene;
 
