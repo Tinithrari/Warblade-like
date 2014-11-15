@@ -2,7 +2,7 @@ package movement;
 
 public class AlienSimpleShotMovement extends Movement {
 
-	public AlienSimpleShotMovement(double x, double y) {
+	public AlienSimpleShotMovement(float x, float y) {
 		super(x, y);
 		this.setDy(300);
 	}

@@ -2,7 +2,7 @@ package movement;
 
 public class PlayerSimpleShotMovement extends Movement {
 
-	public PlayerSimpleShotMovement(double x, double y) {
+	public PlayerSimpleShotMovement(float x, float y) {
 		super(x, y);
 		this.setDy(-300);
 	}

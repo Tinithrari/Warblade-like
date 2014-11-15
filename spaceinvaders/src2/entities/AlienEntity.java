@@ -2,9 +2,11 @@ package entities;
 
 import java.util.ArrayList;
 
+import entityManager.GameScene;
 import shoot.AlienShootStrategy;
 import movement.Movement;
-import base.Application;
+import base.Deprecated;
+import base.SoundStore;
 
 /**
  * An entity which represents one of our space invader aliens.
@@ -14,20 +16,20 @@ import base.Application;
 public class AlienEntity extends EnemyEntity {
 	/** The speed at which the alient moves horizontally */
 	/** The game in which the entity exists */
-	private Application game;
+	private GameScene gameScene;
 	private AlienShootStrategy attack;
 	
 	/**
 	 * Create a new alien entity
 	 * 
-	 * @param game The game in which this entity is being created
+	 * @param gameScene The game in which this entity is being created
 	 * @param ref The sprite which should be displayed for this alien
 	 * @param x The intial x location of this alien
 	 * @param y The intial y location of this alient
 	 */
-	public AlienEntity(Application game,String ref, Movement strategy, AlienShootStrategy attack) {
+	public AlienEntity(GameScene gameScene,String ref, Movement strategy, AlienShootStrategy attack) {
 		super(ref,strategy);
-		this.game = game;
+		this.gameScene = gameScene;
 		this.attack = attack;
 	}
 
@@ -37,25 +39,7 @@ public class AlienEntity extends EnemyEntity {
 	 * @param delta The time that has elapsed since last move
 	 */
 	public void move(long delta) {
-		// if we have reached the left hand side of the screen and
-		// are moving left then request a logic update 
-		if ((getMoveStrategy().getDx() < 0) && (getMoveStrategy().getX() < 10)) {
-			game.updateLogic();
-		}
-		// and vice vesa, if we have reached the right hand side of 
-		// the screen and are moving right, request a logic update
-		if ((getMoveStrategy().getDx() > 0) && (getMoveStrategy().getX() > 750)) {
-			game.updateLogic();
-		}
-		
-		if ((getMoveStrategy().getDy() > 0) && (getMoveStrategy().getY() > 570))
-			game.updateLogic();
-		
-		if ((getMoveStrategy().getDy() < 0) && (getMoveStrategy().getY() < sprite.getHeight()))
-			game.updateLogic();
-		
-		// proceed with normal move
-		getMoveStrategy().move(delta);
+		super.move(delta);
 	}
 	
 	/**
@@ -63,25 +47,18 @@ public class AlienEntity extends EnemyEntity {
 	 */
 
 	public void doLogic() {
-		// swap over horizontal movement and move down the
-		// screen a bit
 		getMoveStrategy().doLogic();
-		
-		// if we've reached the bottom of the screen then the player
-		// dies
-		if (getMoveStrategy().getY() > 570) {
-			game.notifyDeath();
-		}
 	}
 	
 	public void fire() {
-		ArrayList<AlienShotEntity> shot = attack.tryToFire(game, getX(), getY());
+		ArrayList<AlienShotEntity> shot = attack.tryToFire(gameScene, getX(), getY());
 		
 		if (shot != null)
 		{
 			for (int i = 0; i < shot.size();i++)
 			{
-				game.getEnemyEntities().add(shot.get(i));
+				gameScene.getLevel().getEnemyEntities().add(shot.get(i));
+				gameScene.getSoundList().add(SoundStore.get().getSprite("sound/laser.wav"));
 			}
 		}
 	}
@@ -91,7 +68,7 @@ public class AlienEntity extends EnemyEntity {
 	 * 
 	 * @param other The other entity
 	 */
-	public void collidedWith(PlayersEntity other) {
-		// collisions with aliens are handled elsewhere
+	public void collidedWith(PlayerEntity other) {
+
 	}
 }

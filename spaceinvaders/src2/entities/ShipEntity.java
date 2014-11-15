@@ -2,8 +2,10 @@ package entities;
 
 import java.util.ArrayList;
 
+import entityManager.GameScene;
 import movement.Movement;
-import base.Application;
+import base.Deprecated;
+import base.SoundStore;
 import shoot.PlayerShootStrategy;
 import shoot.PlayerSimpleShot;
 
@@ -12,22 +14,22 @@ import shoot.PlayerSimpleShot;
  * 
  * @author Kevin Glass
  */
-public class ShipEntity extends PlayersEntity {
+public class ShipEntity extends PlayerEntity {
 	/** The game in which the ship exists */
-	private Application game;
+	private GameScene gameScene;
 	private PlayerShootStrategy shootStrategy;
 	
 	/**
 	 * Create a new entity to represent the players ship
 	 *  
-	 * @param game The game in which the ship is being created
+	 * @param gameScene The game in which the ship is being created
 	 * @param ref The reference to the sprite to show for the ship
 	 * @param strategy TODO
 	 */
-	public ShipEntity(Application game,String ref,Movement strategy) {
+	public ShipEntity(GameScene gameScene,String ref,Movement strategy) {
 		super(ref,strategy);
 		
-		this.game = game;
+		this.gameScene = gameScene;
 		
 		shootStrategy = new PlayerSimpleShot();
 	}
@@ -38,28 +40,17 @@ public class ShipEntity extends PlayersEntity {
 	 * 
 	 * @param delta The time that has elapsed since last move (ms)
 	 */
-	public void move(long delta) {
-		// if we're moving left and have reached the left hand side
-		// of the screen, don't move
-		if ((getMoveStrategy().getDx() < 0) && (getMoveStrategy().getX() < 10)) {
-			return;
-		}
-		// if we're moving right and have reached the right hand side
-		// of the screen, don't move
-		if ((getMoveStrategy().getDx() > 0) && (getMoveStrategy().getX() > 750)) {
-			return;
-		}
-		
-		super.move(delta);
-	}
 	
 	public void tryToFire(){
-		ArrayList<PlayerShotEntity> shot = shootStrategy.tryToFire(game, getMoveStrategy().getX(), getMoveStrategy().getY());
+		ArrayList<PlayerShotEntity> shot = shootStrategy.tryToFire(gameScene, getMoveStrategy().getX(), getMoveStrategy().getY());
 		
 		if (shot != null)
 		{
 			for (int i = 0; i < shot.size(); i++)
-				game.getPlayersEntities().add(shot.get(i));
+			{
+				gameScene.getPlayerEntities().add(shot.get(i));
+				gameScene.getSoundList().add(SoundStore.get().getSprite("sound/laser1.wav"));
+			}
 		}
 	}
 	
@@ -70,11 +61,7 @@ public class ShipEntity extends PlayersEntity {
 	 * @param other The entity with which the ship has collided
 	 */
 	public void collidedWith(EnemyEntity other) {
-		// if its an alien, notify the game that the player
-		// is dead
-		if (other instanceof AlienEntity) {
-			game.notifyDeath();
-		}
+		// TODO gameScene.notifyDeath();
 	}
 
     @Override

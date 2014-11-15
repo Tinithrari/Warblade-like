@@ -1,45 +1,52 @@
 package movement;
 
+import level.Level;
+
 public class AlienRandomMovement extends Movement {
 
-	private double delta;
-	private double intervalle;
-	private double lastInvoke;
+	private long delta;
+	private float intervalle;
+	private long lastInvoke;
+	private Level level;
 	
-	public AlienRandomMovement(double x, double y) {
+	public AlienRandomMovement(float x, float y, Level level) {
 		super(x, y);
-		intervalle = Math.random() * 1000;
+		intervalle = (float) (Math.random() * 1000);
 		
-		setDx(((Math.random() * 300) - 150));
-		setDy(((Math.random() * 30) - 150));
+		setDx((float) ((Math.random() * 300) - 150));
+		setDy((float) ((Math.random() * 300) - 150));
 		
 		lastInvoke = System.currentTimeMillis();
+		
+		this.level = level;
 	}
 
 	@Override
 	public void move(long time) {
 		delta = System.currentTimeMillis() - lastInvoke;
 		
+		//System.out.println(getX() < 0 || getX() > 750 || getY() < 0 || getY() > 550 );
+		
+		if (getX() < 0 || getX() > 750 || getY() < 0 || getY() > 550)
+			doLogic();
 		if (delta > intervalle)
 		{
-			intervalle = Math.random() * 1000;
+			intervalle = (float) (Math.random() * 1000);
 			
-			this.setDx(((Math.random() * 300) - 150));
-			this.setDy(((Math.random() * 300) - 150));
+			this.setDx((float) ((Math.random() * 300) - 150));
+			this.setDy((float) ((Math.random() * 300) - 150));
 			
 			lastInvoke = System.currentTimeMillis();
 		}
 		
-		setX(getX() + ((time * getDx()) / 1000));
-		setY(getY() + ((time * getDy()) / 1000));
-
+		setX((float)(getX() + ((time * getDx()) / 1000)));
+		setY((float)(getY() + ((time * getDy()) / 1000)));
 	}
 
 	@Override
 	public void doLogic() {
-		if (getX() < 10 || getX() > 750)
-			setDx(-getDx());
 		setDy(-getDy());
+		setDx(-getDx());
 	}
 
 }

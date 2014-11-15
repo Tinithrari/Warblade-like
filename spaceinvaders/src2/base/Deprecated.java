@@ -24,7 +24,7 @@ import movement.PlayerMovement;
 import entities.AlienEntity;
 import entities.EnemyEntity;
 import entities.Entity;
-import entities.PlayersEntity;
+import entities.PlayerEntity;
 import entities.ShipEntity;
 import entities.PlayerShotEntity;
 
@@ -43,25 +43,23 @@ import entities.PlayerShotEntity;
  * 
  * @author Kevin Glass
  */
-public class Application extends Canvas {
-	/** The stragey that allows us to use accelerate page flipping */
-	private BufferStrategy strategy;
+public class Deprecated extends Canvas {
+
+	
 	
 	/** True if the game is currently "running", i.e. the game loop is looping */
 	private boolean gameRunning = true;
 	
-	private Level level;
-	/** The list of all the entities that exist in our game */
-	private ArrayList<PlayersEntity> playerEntities = new ArrayList<PlayersEntity>();
-	private ArrayList<EnemyEntity> enemyEntities = new ArrayList<EnemyEntity>();
-	/** The list of entities that need to be removed from the game this loop */
-	private ArrayList<Entity> removeList = new ArrayList<Entity>();
 	
-	/** The entity representing the player */
-	private PlayersEntity ship;
-	/** The speed at which the player's ship should move (pixels/sec) */
+	private BufferStrategy strategy;
+	private Level level;
+	private ArrayList<PlayerEntity> playerEntities = new ArrayList<PlayerEntity>();
+	private ArrayList<EnemyEntity> enemyEntities = new ArrayList<EnemyEntity>();
+	private ArrayList<Entity> removeList = new ArrayList<Entity>();
+	private PlayerEntity ship;
 	private double moveSpeed = 300;
-	/** The number of aliens left on the screen */
+	
+	
 	private int alienCount;
 	
 	/** The message to display which waiting for a key press */
@@ -80,10 +78,10 @@ public class Application extends Canvas {
 	/**
 	 * Construct our game and set it running.
 	 */
-	public Application() {
+	public Deprecated() {
 		// create a frame to contain our game
 		JFrame container = new JFrame("Space Invaders 101");
-		level = new Level1(this);
+		//level = new Level1(this);
 		// get hold the content of the frame and set up the resolution of the game
 		JPanel panel = (JPanel) container.getContentPane();
 		panel.setPreferredSize(new Dimension(800,600));
@@ -148,11 +146,11 @@ public class Application extends Canvas {
 	 */
 	private void initEntities() {
 		// create the player ship and place it roughly in the center of the screen
-		ship = new ShipEntity(this,"sprites/ship.gif",new PlayerMovement(370,550)); //TODO
+		//ship = new ShipEntity(this,"sprites/ship.gif",new PlayerMovement(370,550)); //TODO
 		playerEntities.add(ship);
 		
 		// create a block of aliens (3 rows, by 10 aliens, spaced evenly)
-		alienCount = level.initAlien(enemyEntities);
+		//alienCount = level.initEnemy(enemyEntities);
 	}
 	
 	/**
@@ -259,7 +257,7 @@ public class Application extends Canvas {
 			
 			// cycle round asking each entity to move itself
 			if (!waitingForKeyPress) {
-				for(PlayersEntity entity : playerEntities)
+				for(PlayerEntity entity : playerEntities)
 					entity.move(delta);
 				for(int i = 0; i < enemyEntities.size(); i++)
 				{
@@ -269,7 +267,7 @@ public class Application extends Canvas {
 			}
 			
 			// cycle round drawing all the entities we have in the game
-            for(PlayersEntity entity : playerEntities)
+            for(PlayerEntity entity : playerEntities)
 				entity.draw(g);
             
             for (EnemyEntity entity : enemyEntities)
@@ -280,7 +278,7 @@ public class Application extends Canvas {
 			// both entities that the collision has occured
 			for (int p=0;p<playerEntities.size();p++) {
 				for (int s=0;s<enemyEntities.size();s++) {
-					PlayersEntity me = playerEntities.get(p);
+					PlayerEntity me = playerEntities.get(p);
 					EnemyEntity him = enemyEntities.get(s);
 					
 					if (me.collidesWith(him)) {
@@ -305,7 +303,7 @@ public class Application extends Canvas {
 					entity.doLogic();
 				}
 			    
-			    for(PlayersEntity entity : playerEntities) {
+			    for(PlayerEntity entity : playerEntities) {
 					entity.doLogic();
 				}
 				
@@ -348,7 +346,7 @@ public class Application extends Canvas {
 		}
 	}
 	
-	public ArrayList<PlayersEntity> getPlayersEntities() {
+	public ArrayList<PlayerEntity> getPlayersEntities() {
 		return playerEntities;
 	}
 	
@@ -464,12 +462,4 @@ public class Application extends Canvas {
 	 * 
 	 * @param argv The arguments that are passed into our game
 	 */
-	public static void main(String argv[]) {
-		Application g =new Application();
-
-		// Start the main game loop, note: this method will not
-		// return until the game has finished running. Hence we are
-		// using the actual main thread to run the game.
-		g.gameLoop();
-	}
 }

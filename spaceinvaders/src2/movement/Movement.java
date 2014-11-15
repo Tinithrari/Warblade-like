@@ -1,13 +1,16 @@
 package movement;
 
+import level.Level;
+
 public abstract class Movement {
 
-	private double x;
-	private double y;
-	private double dx;
-	private double dy;
+	private float x;
+	private float y;
+	private float dx;
+	private float dy;
+	private Level level;
 	
-	public Movement(double x, double y) {
+	public Movement(float x, float y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -15,38 +18,35 @@ public abstract class Movement {
 	public abstract void move(long delta);
 	public abstract void doLogic();
 
-	public double getX() {
+	public float getX() {
 		return x;
 	}
 
-	public void setX(double x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
-	public double getY() {
+	public float getY() {
 		return y;
 	}
 
-	public void setY(double y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 
-	public double getDx() {
+	public float getDx() {
 		return dx;
 	}
 
-	public void setDx(double dx) {
+	public void setDx(float dx) {
 		this.dx = dx;
 	}
 
-	public double getDy() {
+	public float getDy() {
 		return dy;
 	}
 
-	public void setDy(double dy) {
+	public void setDy(float dy) {
 		this.dy = dy;
 	}
-	
-	
-
 }

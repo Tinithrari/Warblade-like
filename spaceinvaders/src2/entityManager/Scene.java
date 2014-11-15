@@ -1,9 +1,9 @@
 package entityManager;
 
-import java.awt.Canvas;
+import org.jsfml.graphics.RenderWindow;
 
-public abstract class Scene extends Canvas{
-	public abstract void processEvent();
-	public abstract void update(long delta);
-	public abstract void render();
+public interface Scene{
+	public void processEvent();
+	public void update(long delta);
+	public void render(RenderWindow renderer);
 }

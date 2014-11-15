@@ -1,27 +1,28 @@
 package entities;
 
-import base.Application;
+import entityManager.GameScene;
+import base.Deprecated;
 import movement.Movement;
 
 public class AlienShotEntity extends EnemyEntity {
 
-	private Application game;
+	private GameScene gameScene;
 	private boolean used = false;
 	
-	public AlienShotEntity(Application game, String ref, Movement strategy) {
+	public AlienShotEntity(GameScene gameScene, String ref, Movement strategy) {
 		super(ref, strategy);
 		// TODO Auto-generated constructor stub
-		this.game =  game;
+		this.gameScene =  gameScene;
 	}
 
 	@Override
-	public void collidedWith(PlayersEntity other) {
+	public void collidedWith(PlayerEntity other) {
 		if (used) {
 			return;
 		}
 		
-		game.removeEntity(this);
-		game.removeEntity(other);
+		gameScene.removeEntity(this);
+		gameScene.removeEntity(other);
 		
 		used = true;
 		
@@ -29,11 +30,10 @@ public class AlienShotEntity extends EnemyEntity {
 
 	@Override
 	public void move(long delta) {
-		// TODO Auto-generated method stub
 		super.move(delta);
 		// if we shot off the screen, remove ourselfs
-		if (getMoveStrategy().getY() > game.getHeight() + 100) {
-			game.removeEntity(this);
+		if (getMoveStrategy().getY() > 600 + 100) {
+			gameScene.removeEntity(this);
 		}
 	}
 

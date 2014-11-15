@@ -2,9 +2,10 @@ package shoot;
 
 import java.util.ArrayList;
 
-import base.Application;
+import base.Deprecated;
 import movement.PlayerSimpleShotMovement;
 import entities.PlayerShotEntity;
+import entityManager.GameScene;
 
 public class PlayerSimpleShot implements PlayerShootStrategy {
 
@@ -18,14 +19,14 @@ public class PlayerSimpleShot implements PlayerShootStrategy {
 	}
 
 	@Override
-	public ArrayList<PlayerShotEntity> tryToFire(Application g, double x, double y) {
+	public ArrayList<PlayerShotEntity> tryToFire(GameScene g, float x, float y) {
 		if (System.currentTimeMillis() - lastFire < firingInterval) {
 			return null;
 		}
 		ArrayList<PlayerShotEntity> shot = new ArrayList<PlayerShotEntity>();
 		// if we waited long enough, create the shot entity, and record the time.
 		lastFire = System.currentTimeMillis();
-		PlayerShotEntity bullet = new PlayerShotEntity(g,"sprites/shot.gif",new PlayerSimpleShotMovement(x+10,y-30));
+		PlayerShotEntity bullet = new PlayerShotEntity(g,"sprites/shot.png",new PlayerSimpleShotMovement(x+15,y-30));
 		shot.add(bullet);
 		return shot;
 

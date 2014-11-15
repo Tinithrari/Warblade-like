@@ -1,15 +1,18 @@
 package base;
 
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsEnvironment;
-import java.awt.Image;
-import java.awt.Transparency;
-import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
-import javax.imageio.ImageIO;
+import sprites.*;
+
+import org.jsfml.graphics.ConstTexture;
+import org.jsfml.graphics.Sprite;
+import org.jsfml.graphics.Texture;
 
 /**
  * A resource manager for sprites in the game. Its often quite important
@@ -46,46 +49,20 @@ public class SpriteStore {
 	 * @param ref The reference to the image to use for the sprite
 	 * @return A sprite instance containing an accelerate image of the request reference
 	 */
-	public Sprite getSprite(String ref) {
+	public Texture getSprite(String ref) {
 		// if we've already got the sprite in the cache
 		// then just return the existing version
-		if (sprites.get(ref) != null) {
-			return (Sprite) sprites.get(ref);
-		}
-		
-		// otherwise, go away and grab the sprite from the resource
-		// loader
-		BufferedImage sourceImage = null;
-		
-		try {
-			// The ClassLoader.getResource() ensures we get the sprite
-			// from the appropriate place, this helps with deploying the game
-			// with things like webstart. You could equally do a file look
-			// up here.
-			URL url = this.getClass().getClassLoader().getResource(ref);
-			
-			if (url == null) {
-				fail("Can't find ref: "+ref);
+		if (sprites.get(ref) == null) {
+			try {
+				Texture image = new Texture();
+				image.loadFromStream(this.getClass().getClassLoader().getResourceAsStream(ref));
+				sprites.put(ref, image);
+			} catch (IOException e) {
+				e.printStackTrace();
+				fail("Loading error for : "  + ref);
 			}
-			
-			// use ImageIO to read the image in
-			sourceImage = ImageIO.read(url);
-		} catch (IOException e) {
-			fail("Failed to load: "+ref);
 		}
-		
-		// create an accelerated image of the right size to store our sprite in
-		GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration();
-		Image image = gc.createCompatibleImage(sourceImage.getWidth(),sourceImage.getHeight(),Transparency.BITMASK);
-		
-		// draw our source image into the accelerated image
-		image.getGraphics().drawImage(sourceImage,0,0,null);
-		
-		// create a sprite, add it the cache then return it
-		Sprite sprite = new Sprite(image);
-		sprites.put(ref,sprite);
-		
-		return sprite;
+		return (Texture) sprites.get(ref);
 	}
 	
 	/**

@@ -1,11 +1,9 @@
 /base/
-/diagramme.ucls
-/entities/
+/entityManager/
+/shoot/
+/window/
 /sprites/
 /level/
+/entities/
 /movement/
-/shoot/
-/ShotEntity.class
-/screen/
-/entityManager/
-/keyboard/
+/sound/

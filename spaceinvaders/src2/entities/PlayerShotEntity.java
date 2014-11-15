@@ -1,31 +1,32 @@
 package entities;
 
+import entityManager.GameScene;
 import movement.Movement;
-import base.Application;
+import base.Deprecated;
 
 /**
  * An entity representing a shot fired by the player's ship
  * 
  * @author Kevin Glass
  */
-public class PlayerShotEntity extends PlayersEntity {
+public class PlayerShotEntity extends PlayerEntity {
 	/** The vertical speed at which the players shot moves */
 	/** The game in which this entity exists */
-	private Application game;
+	private GameScene gameScene;
 	/** True if this shot has been "used", i.e. its hit something */
 	private boolean used = false;
 	
 	/**
 	 * Create a new shot from the player
 	 * 
-	 * @param game The game in which the shot has been created
+	 * @param gameScene The game in which the shot has been created
 	 * @param sprite The sprite representing this shot
 	 * @param strategy TODO
 	 */
-	public PlayerShotEntity(Application game,String sprite,Movement strategy) {
+	public PlayerShotEntity(GameScene gameScene,String sprite,Movement strategy) {
 		super(sprite,strategy);
 		
-		this.game = game;
+		this.gameScene = gameScene;
 	}
 
 	/**
@@ -39,16 +40,11 @@ public class PlayerShotEntity extends PlayersEntity {
 		
 		// if we shot off the screen, remove ourselfs
 		if (getMoveStrategy().getY() < -100) {
-			game.removeEntity(this);
+			gameScene.removeEntity(this);
 		}
 	}
 	
-	/**
-	 * Notification that this shot has collided with another
-	 * entity
-	 * 
-	 * @parma other The other entity with which we've collided
-	 */
+	
 	public void collidedWith(EnemyEntity other) {
 		// prevents double kills, if we've already hit something,
 		// don't collide
@@ -56,12 +52,12 @@ public class PlayerShotEntity extends PlayersEntity {
 			return;
 		}
 		
-		game.removeEntity(this);
-		game.removeEntity(other);
+		gameScene.removeEntity(this);
+		gameScene.removeEntity(other);
 		
 		// notify the game that the alien has been killed
 		if (!other.isABullet())
-			game.notifyAlienKilled();
+			gameScene.notifyEnemyKilled();
 		used = true;
 		
 	}

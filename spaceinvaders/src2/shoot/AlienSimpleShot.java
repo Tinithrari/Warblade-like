@@ -3,23 +3,27 @@ package shoot;
 import java.util.ArrayList;
 
 import movement.AlienSimpleShotMovement;
-import base.Application;
+import base.Deprecated;
 import entities.AlienShotEntity;
+import entityManager.GameScene;
 
 public class AlienSimpleShot implements AlienShootStrategy {
 
-	private double lastFire = System.currentTimeMillis();
-	private int firingInterval = (int) (Math.random() * 15000) + 2000;
+	private long lastFire;
+	private int firingInterval;
 	
 	public AlienSimpleShot() {
-		// TODO Auto-generated constructor stub
+		lastFire = System.currentTimeMillis();
+		firingInterval = (int) (Math.random() * 15000) + 2000;
 	}
 
 	@Override
-	public ArrayList<AlienShotEntity> tryToFire(Application g, double x, double y) {
+	public ArrayList<AlienShotEntity> tryToFire(GameScene g, float x, float y) {
+		
 		if (System.currentTimeMillis() - lastFire < firingInterval) {
 			return null;
 		}
+		
 		ArrayList<AlienShotEntity> shot = new ArrayList<AlienShotEntity>();
 		// if we waited long enough, create the shot entity, and record the time.
 		lastFire = System.currentTimeMillis();

@@ -1,10 +1,13 @@
 package entities;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import org.jsfml.graphics.RenderWindow;
+import org.jsfml.graphics.Sprite;
+import org.jsfml.graphics.Texture;
+import org.jsfml.system.Vector2f;
+
 import movement.Movement;
-import base.Sprite;
 import base.SpriteStore;
 
 /**
@@ -12,8 +15,8 @@ import base.SpriteStore;
  * entity is responsible for resolving collisions and movement
  * based on a set of properties defined either by subclass or externally.
  * 
- * Note that doubles are used for positions. This may seem strange
- * given that pixels locations are integers. However, using double means
+ * Note that floats are used for positions. This may seem strange
+ * given that pixels locations are integers. However, using float means
  * that an entity can move a partial pixel. It doesn't of course mean that
  * they will be display half way through a pixel but allows us not lose
  * accuracy as we move.
@@ -29,6 +32,7 @@ public abstract class Entity {
 	private Rectangle me = new Rectangle();
 	/** The rectangle used for other entities during collision resolution */
 	private Rectangle him = new Rectangle();
+	private String ref;
 	
 	/**
 	 * Construct a entity based on a sprite image and a location.
@@ -37,10 +41,20 @@ public abstract class Entity {
 	 * @param strategy TODO
 	 */
 	public Entity(String ref,Movement strategy) {
-		this.sprite = SpriteStore.get().getSprite(ref);
+		this.sprite = new Sprite();
 		moveStrategy = strategy;
+		sprite.setPosition(getX(), getY());
+		this.ref = ref;
+		sprite.setTexture(SpriteStore.get().getSprite(ref));
+		sprite.setPosition(getX(),getY()); 
 	}
 	
+	public Sprite getSprite() {
+		return sprite;
+	}
+
+
+
 	/**
 	 * Request that this entity move itself based on a certain ammount
 	 * of time passing.
@@ -48,7 +62,8 @@ public abstract class Entity {
 	 * @param delta The ammount of time that has passed in milliseconds
 	 */
 	public void move(long delta) {
-		moveStrategy.move(delta);	
+		moveStrategy.move(delta);
+		sprite.setPosition(getX(),getY());
 	}
 	
 	/**
@@ -56,7 +71,7 @@ public abstract class Entity {
 	 * 
 	 * @param dx The horizontal speed of this entity (pixels/sec)
 	 */
-	public void setHorizontalMovement(double dx) {
+	public void setHorizontalMovement(float dx) {
 		moveStrategy.setDx(dx);
 	}
 
@@ -65,7 +80,7 @@ public abstract class Entity {
 	 * 
 	 * @param dx The vertical speed of this entity (pixels/sec)
 	 */
-	public void setVerticalMovement(double dy) {
+	public void setVerticalMovement(float dy) {
 		moveStrategy.setDy(dy);
 	}
 	
@@ -74,7 +89,7 @@ public abstract class Entity {
 	 * 
 	 * @return The horizontal speed of this entity (pixels/sec)
 	 */
-	public double getHorizontalMovement() {
+	public float getHorizontalMovement() {
 		return moveStrategy.getDx();
 	}
 
@@ -83,17 +98,12 @@ public abstract class Entity {
 	 * 
 	 * @return The vertical speed of this entity (pixels/sec)
 	 */
-	public double getVerticalMovement() {
+	public float getVerticalMovement() {
 		return moveStrategy.getDy();
 	}
 	
-	/**
-	 * Draw this entity to the graphics context provided
-	 * 
-	 * @param g The graphics context on which to draw
-	 */
-	public void draw(Graphics g) {
-		sprite.draw(g,(int) moveStrategy.getX(),(int) moveStrategy.getY());
+	public void draw(RenderWindow renderer) {
+		renderer.draw(sprite);
 	}
 	
 	/**
@@ -107,8 +117,8 @@ public abstract class Entity {
 	 * 
 	 * @return The x location of this entity
 	 */
-	public int getX() {
-		return (int) moveStrategy.getX();
+	public float getX() {
+		return moveStrategy.getX();
 	}
 
 	/**
@@ -127,8 +137,8 @@ public abstract class Entity {
 	 * @return True if the entities collide with each other
 	 */
 	public boolean collidesWith(Entity other) {
-		me.setBounds((int) moveStrategy.getX(),(int) moveStrategy.getY(),sprite.getWidth(),sprite.getHeight());
-		him.setBounds((int) other.getMoveStrategy().getX(),(int) other.getMoveStrategy().getY(),other.sprite.getWidth(),other.sprite.getHeight());
+		me.setBounds((int)getMoveStrategy().getX(), (int)getMoveStrategy().getY(), (int)sprite.getGlobalBounds().width, (int)sprite.getGlobalBounds().height);
+		him.setBounds((int) other.getMoveStrategy().getX(),(int) other.getMoveStrategy().getY(),(int) other.sprite.getGlobalBounds().width ,(int)other.sprite.getGlobalBounds().height);
 
 		return me.intersects(him);
 	}

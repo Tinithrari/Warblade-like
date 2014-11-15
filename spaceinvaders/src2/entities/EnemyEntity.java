@@ -9,7 +9,7 @@ public abstract class EnemyEntity extends Entity {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public abstract void collidedWith(PlayersEntity other);
+	public abstract void collidedWith(PlayerEntity other);
 	public abstract void fire();
 	public boolean isABullet() {
 		return false;
