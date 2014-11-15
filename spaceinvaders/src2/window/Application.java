@@ -7,7 +7,6 @@ import org.jsfml.window.WindowStyle;
 import org.jsfml.window.event.Event;
 import org.jsfml.window.event.Event.Type;
 
-import entityManager.GameScene;
 import entityManager.MenuScene;
 import entityManager.Scene;
 

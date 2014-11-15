@@ -2,35 +2,34 @@ package level;
 
 import shoot.AlienSimpleShot;
 import movement.AlienRandomMovement;
-import movement.ClassicMovement;
+import movement.LeftToRightMovement;
 import entities.AlienEntity;
 import entities.EnemyEntity;
 import entityManager.GameScene;
 
-public class Level1 extends Level {
+public class Level2 extends Level {
 
+	private GameScene gameScene;
 	private boolean moveChanged = false;
 	
-	private GameScene gameScene;
-
-	public Level1(GameScene gameScene) {
+	public Level2(GameScene gameScene) {
 		this.gameScene = gameScene;
+		initEnemy();
 	}
 
 	@Override
 	public void initEnemy() {
-		for (int row=0;row<3;row++) {
-			for (int x=0;x<10;x++) {
-				EnemyEntity alien = new AlienEntity(gameScene,"sprites/alien.png",new ClassicMovement(100+(x*50),(50)+row*30, this), new AlienSimpleShot());
-				getEnemyEntities().add(alien);
-			}
+		for (int i = 0; i <= 20; i++)
+		{
+			getEnemyEntities().add(new AlienEntity(gameScene, "sprites/alien.png", new LeftToRightMovement(-50 + (i*(-50)), 50), new AlienSimpleShot()));
 		}
-		setNbEnemy(30);
+		setNbEnemy(20);
 	}
 
 	@Override
 	public void processEvent() {
-		
+		// TODO Auto-generated method stub
+
 		if (getNbEnemy() == 5 && !moveChanged) {
 			for(EnemyEntity entity : getEnemyEntities()) 
 			{
@@ -43,31 +42,24 @@ public class Level1 extends Level {
 		
 		if (getNbEnemy() == 0)
 		{
-			gameScene.setLevel(new Level2(gameScene));
+			gameScene.setLevel(null);
 		}
+	}
+
+	@Override
+	public void update(long delta) {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < getEnemyEntities().size(); i++)
+		{
+			getEnemyEntities().get(i).move(delta);
+			getEnemyEntities().get(i).fire();
+		}	
 	}
 
 	@Override
 	public void updateLogic() {
-		for (int i = 0; i < getEnemyEntities().size(); i++)
-		{
-			getEnemyEntities().get(i).doLogic();
-		}
+		// TODO Auto-generated method stub
+
 	}
 
-	@Override
-	public void notifyEnemyKilled() {
-		// TODO Auto-generated method stub
-		super.notifyEnemyKilled();
-		if (getNbEnemy() > 5)
-		{
-			for(EnemyEntity entity : getEnemyEntities()) 
-			{
-				if (!entity.isNotAMonster())
-				{
-					entity.setHorizontalMovement((float) (entity.getHorizontalMovement() * 1.02));
-				}
-			}
-		}
-	}
 }

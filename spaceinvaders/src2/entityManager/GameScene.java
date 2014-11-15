@@ -78,7 +78,7 @@ public class GameScene implements Scene {
 		
 		level.processEvent();
 		
-		if (removeList.contains(ship) || level.getNbEnemy() == 0)
+		if (removeList.contains(ship) || level == null)
 		{
 			app.setScene(new MenuScene());
 		}
@@ -139,6 +139,10 @@ public class GameScene implements Scene {
 
 	public Queue<SoundBuffer> getSoundList() {
 		return soundList;
+	}
+
+	public void setLevel(Level level) {
+		this.level = level;
 	}
 	
 	

@@ -22,7 +22,7 @@ public class AlienRandomMovement extends Movement {
 		
 		//System.out.println(getX() < 0 || getX() > 750 || getY() < 0 || getY() > 550 );
 		
-		if (getX() < 0 || getX() > 750 || getY() < 0 || getY() > 550)
+		if ((getDx() < 0 && getX() < 0) || (getDx() > 0 && getX() > 750) || (getDy() < 0 && getY() < 0) || (getDy() > 0 && getY() > 550))
 			doLogic();
 		if (delta > intervalle)
 		{
