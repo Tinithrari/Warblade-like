@@ -1,144 +1,856 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.6" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="base.Game" project="spaceinvaders" file="/spaceinvaders/src2/base/Game.java" 
+<class-diagram version="1.1.7" icons="true" automaticImage="JPEG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="movement.allyMovement.PlayerMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/allyMovement/PlayerMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="158" x="780" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="movement.enemyMovement.CircularMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/enemyMovement/CircularMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="165" x="978" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="level.Level3" project="warblade-like" file="/warblade-like/src/level/Level3.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="778" y="258"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
+    <position height="135" width="125" x="1538" y="1649"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="base.Game.KeyInputHandler" project="spaceinvaders" 
-    file="/spaceinvaders/src2/base/Game.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="152" width="184" x="69" y="615"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="base.Sprite" project="spaceinvaders" file="/spaceinvaders/src2/base/Sprite.java" 
+  <class id="4" language="java" name="level.Level4" project="warblade-like" file="/warblade-like/src/level/Level4.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="152" width="168" x="321" y="254"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
+    <position height="171" width="125" x="1703" y="1649"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="base.SpriteStore" project="spaceinvaders" 
-    file="/spaceinvaders/src2/base/SpriteStore.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="72" y="148"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
+  <interface id="5" language="java" name="entityManager.Scene" project="warblade-like" 
+    file="/warblade-like/src/entityManager/Scene.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="177" x="-19" y="2835"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="level.Level1" project="warblade-like" file="/warblade-like/src/level/Level1.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="141" x="1889" y="1649"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="entities.Entity" project="spaceinvaders" 
-    file="/spaceinvaders/src2/entities/Entity.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="368" y="191"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
+  <class id="7" language="java" name="entities.ExplosionEntity" project="warblade-like" 
+    file="/warblade-like/src/entities/ExplosionEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="248" x="1494" y="2107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="entities.AlienEntity" project="spaceinvaders" 
-    file="/spaceinvaders/src2/entities/AlienEntity.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="100" y="487"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
+  <class id="8" language="java" name="level.Level2" project="warblade-like" file="/warblade-like/src/level/Level2.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="139" x="2091" y="1649"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="entities.ShotEntity" project="spaceinvaders" 
-    file="/spaceinvaders/src2/entities/ShotEntity.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="377" y="528"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
+  <class id="9" language="java" name="entities.allyEntities.ShipEntity" project="warblade-like" 
+    file="/warblade-like/src/entities/allyEntities/ShipEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="240" x="3292" y="2835"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="entities.ShipEntity" project="spaceinvaders" 
-    file="/spaceinvaders/src2/entities/ShipEntity.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="575" y="531"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
+  <class id="10" language="java" name="level.Level5" project="warblade-like" file="/warblade-like/src/level/Level5.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="125" x="2291" y="1649"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="9">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="10" name="single"/>      
-      <multiplicity id="11" minimum="0" maximum="1"/>    
+  <class id="11" language="java" name="movement.allyMovement.ShieldMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/allyMovement/ShieldMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="206" x="534" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="entities.allyEntities.ShieldEntity" project="warblade-like" 
+    file="/warblade-like/src/entities/allyEntities/ShieldEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="280" x="3292" y="2107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="movement.enemyMovement.ClassicMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/enemyMovement/ClassicMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="192" x="2051" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="movement.allyMovement.PlayerSimpleShotMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/allyMovement/PlayerSimpleShotMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="211" x="1183" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="entities.enemyEntities.EnemyEntity" project="warblade-like" 
+    file="/warblade-like/src/entities/enemyEntities/EnemyEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="177" x="1494" y="1860"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="entities.enemyEntities.AlienEntity" project="warblade-like" 
+    file="/warblade-like/src/entities/enemyEntities/AlienEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="322" x="1132" y="2107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="entities.bonusEntities.DoubleShotBonusEntity" project="warblade-like" 
+    file="/warblade-like/src/entities/bonusEntities/DoubleShotBonusEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="288" x="2291" y="2107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="movement.enemyMovement.KamikazeMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/enemyMovement/KamikazeMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="174" x="1434" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="entities.allyEntities.PlayerShotEntity" project="warblade-like" 
+    file="/warblade-like/src/entities/allyEntities/PlayerShotEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="268" x="2963" y="2107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="movement.enemyMovement.NoMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/enemyMovement/NoMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="141" x="1648" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="entities.Entity" project="warblade-like" 
+    file="/warblade-like/src/entities/Entity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="369" width="190" x="3167" y="265"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="movement.enemyMovement.LeftToRightMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/enemyMovement/LeftToRightMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="182" x="1829" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="shoot.BlackShipDoubleShot" project="warblade-like" 
+    file="/warblade-like/src/shoot/BlackShipDoubleShot.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="315" x="-157" y="2107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="store.SpriteStore" project="warblade-like" 
+    file="/warblade-like/src/store/SpriteStore.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="189" x="262" y="265"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="shoot.AlienSimpleShot" project="warblade-like" 
+    file="/warblade-like/src/shoot/AlienSimpleShot.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="315" x="198" y="2107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="shoot.PlayerDoubleShot" project="warblade-like" 
+    file="/warblade-like/src/shoot/PlayerDoubleShot.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="321" x="2570" y="2835"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="store.SoundStore" project="warblade-like" 
+    file="/warblade-like/src/store/SoundStore.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="218" x="990" y="265"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="entities.ButtonEntity" project="warblade-like" 
+    file="/warblade-like/src/entities/ButtonEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="199" x="198" y="2835"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="entities.bonusEntities.BonusEntities" project="warblade-like" 
+    file="/warblade-like/src/entities/bonusEntities/BonusEntities.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="179" x="2902" y="1860"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="store.MusicStore" project="warblade-like" 
+    file="/warblade-like/src/store/MusicStore.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="171" x="1748" y="265"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="store.FontStore" project="warblade-like" 
+    file="/warblade-like/src/store/FontStore.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="166" x="2460" y="265"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="movement.enemyMovement.AlienRandomMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/enemyMovement/AlienRandomMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="191" x="2283" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="entities.enemyEntities.BlackShip" project="warblade-like" 
+    file="/warblade-like/src/entities/enemyEntities/BlackShip.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="319" x="773" y="2107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="window.Application" project="warblade-like" 
+    file="/warblade-like/src/window/Application.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="167" x="-226" y="2372"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="movement.enemyMovement.SemiCircularMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/enemyMovement/SemiCircularMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="188" x="2514" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="36" language="java" name="shoot.PlayerShootStrategy" project="warblade-like" 
+    file="/warblade-like/src/shoot/PlayerShootStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="321" x="2931" y="3136"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="37" language="java" name="entities.enemyEntities.AlienShotEntity" project="warblade-like" 
+    file="/warblade-like/src/entities/enemyEntities/AlienShotEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="248" x="1782" y="2107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="entityManager.GameScene" project="warblade-like" 
+    file="/warblade-like/src/entityManager/GameScene.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="229" x="2619" y="2372"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="entityManager.MenuScene" project="warblade-like" 
+    file="/warblade-like/src/entityManager/MenuScene.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="177" x="-19" y="2372"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="movement.Movement" project="warblade-like" 
+    file="/warblade-like/src/movement/Movement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="128" x="1829" y="674"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="movement.enemyMovement.AlienSimpleShotMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/enemyMovement/AlienSimpleShotMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="205" x="2742" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="entities.bonusEntities.ShieldBonusEntity" project="warblade-like" 
+    file="/warblade-like/src/entities/bonusEntities/ShieldBonusEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="262" x="2619" y="2107"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="level.Level" project="warblade-like" file="/warblade-like/src/level/Level.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="233" x="2051" y="1312"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="44" language="java" name="shoot.AlienShootStrategy" project="warblade-like" 
+    file="/warblade-like/src/shoot/AlienShootStrategy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="315" x="198" y="2372"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="45" language="java" name="movement.BonusMovement" project="warblade-like" 
+    file="/warblade-like/src/movement/BonusMovement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="159" x="2987" y="1047"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="shoot.PlayerSimpleShot" project="warblade-like" 
+    file="/warblade-like/src/shoot/PlayerSimpleShot.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="321" x="2931" y="2835"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="entities.allyEntities.PlayerEntity" project="warblade-like" 
+    file="/warblade-like/src/entities/allyEntities/PlayerEntity.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="179" x="3292" y="1860"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="48">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="49" name="gameScene"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="38" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="12">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="5"/>  
+  <association id="51">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="52" name="single"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <bendpoint x="2932" y="2107"/>    
+    <bendpoint x="3111" y="1860"/>    
+    <bendpoint x="3197" y="1649"/>    
+    <bendpoint x="3197" y="1312"/>    
+    <bendpoint x="3197" y="1047"/>    
+    <bendpoint x="3197" y="674"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="55" name="removeList"/>      
+      <multiplicity id="56" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <bendpoint x="543" y="1312"/>    
+    <bendpoint x="543" y="1649"/>    
+    <bendpoint x="543" y="1860"/>    
+    <bendpoint x="543" y="2107"/>    
+    <bendpoint x="543" y="2372"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="58" name="ship"/>      
+      <multiplicity id="59" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="60">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="15"/>  
   </generalization>  
-  <association id="13">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="14" name="game"/>      
-      <multiplicity id="15" minimum="0" maximum="1"/>    
+  <association id="61">    
+    <bendpoint x="2911" y="2107"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="62" name="bonus"/>      
+      <multiplicity id="63" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="29" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="16">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="17" name="sprite"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
+  <association id="64">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="65" name="playButton"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="28" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="19">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
-  </nesting>  
-  <association id="20">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="21" name="game"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
+  <generalization id="67">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <generalization id="68">    
+    <bendpoint x="3176" y="1649"/>    
+    <bendpoint x="3176" y="1312"/>    
+    <bendpoint x="3176" y="1047"/>    
+    <bendpoint x="3176" y="674"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <realization id="69">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="36"/>  
+  </realization>  
+  <association id="70">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="71" name="gameScene"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="38" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="23">    
+  <association id="73">    
+    <bendpoint x="2260" y="2107"/>    
+    <bendpoint x="2260" y="1860"/>    
+    <bendpoint x="2260" y="1649"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="74" name="level"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="76">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <realization id="77">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="44"/>  
+  </realization>  
+  <association id="78">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="79" name="shootStrategy"/>      
+      <multiplicity id="80" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="81">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <association id="82">    
+    <bendpoint x="2060" y="1649"/>    
+    <bendpoint x="2060" y="1860"/>    
+    <bendpoint x="2060" y="2107"/>    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="83" name="gameScene"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="85">    
     <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="5"/>  
+    <end type="TARGET" refId="43"/>  
   </generalization>  
-  <association id="24">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="25" name="ship"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
+  <association id="86">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="87" name="prepareEnemy"/>      
+      <multiplicity id="88" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="89">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <generalization id="90">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <association id="91">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="92" name="single"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="94">    
+    <bendpoint x="564" y="1649"/>    
+    <bendpoint x="522" y="1312"/>    
+    <bendpoint x="503" y="1047"/>    
+    <bendpoint x="503" y="674"/>    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <generalization id="95">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <association id="96">    
+    <bendpoint x="3623" y="2372"/>    
+    <bendpoint x="3623" y="2107"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="97" name="bonus"/>      
+      <multiplicity id="98" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="47" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="99">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="100">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <generalization id="101">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <association id="102">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="103" name="gameScene"/>      
+      <multiplicity id="104" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="105">    
+    <bendpoint x="3238" y="1649"/>    
+    <bendpoint x="3238" y="1312"/>    
+    <bendpoint x="3238" y="1047"/>    
+    <bendpoint x="3238" y="674"/>    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <association id="106">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="107" name="gameScene"/>      
+      <multiplicity id="108" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="109">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="110" name="gameScene"/>      
+      <multiplicity id="111" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="112">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="113" name="ship"/>      
+      <multiplicity id="114" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="115">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <generalization id="116">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <association id="117">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="118" name="scene"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="28" name="game"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
+  <generalization id="120">    
+    <bendpoint x="3602" y="2372"/>    
+    <bendpoint x="3602" y="2107"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <realization id="121">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="44"/>  
+  </realization>  
+  <association id="122">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="123" name="single"/>      
+      <multiplicity id="124" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="24" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="30">    
+  <generalization id="125">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <association id="126">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="127" name="single"/>      
+      <multiplicity id="128" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="129">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="130" name="gameScene"/>      
+      <multiplicity id="131" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="132">    
     <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="43"/>  
+  </generalization>  
+  <association id="133">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="134" name="level"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="43" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="136">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <association id="137">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="138" name="attack"/>      
+      <multiplicity id="139" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="140">    
+    <end type="SOURCE" refId="46"/>    
+    <end type="TARGET" refId="36"/>  
+  </realization>  
+  <association id="141">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="142" name="gameScene"/>      
+      <multiplicity id="143" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="144">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="145" name="gameScene"/>      
+      <multiplicity id="146" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="147">    
+    <end type="SOURCE" refId="39"/>    
     <end type="TARGET" refId="5"/>  
+  </realization>  
+  <association id="148">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="149" name="gameScene"/>      
+      <multiplicity id="150" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="151">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="47"/>  
+  </generalization>  
+  <generalization id="152">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <generalization id="153">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="43"/>  
+  </generalization>  
+  <generalization id="154">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="29"/>  
+  </generalization>  
+  <generalization id="155">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <association id="156">    
+    <bendpoint x="1858" y="1649"/>    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="157" name="enemyEntities"/>      
+      <multiplicity id="158" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="159">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="160" name="attack"/>      
+      <multiplicity id="161" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="162">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="163" name="moveStrategy"/>      
+      <multiplicity id="164" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="165">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <generalization id="166">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="43"/>  
+  </generalization>  
+  <generalization id="167">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="40"/>  
+  </generalization>  
+  <association id="168">    
+    <bendpoint x="3261" y="2107"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="169" name="playerEntities"/>      
+      <multiplicity id="170" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="47" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="171">    
+    <bendpoint x="3301" y="2372"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="172" name="entity"/>      
+      <multiplicity id="173" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="174">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="43"/>  
+  </generalization>  
+  <generalization id="175">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="40"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-    accessors="true" visibility="true">    
+    sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
     <operations public="true" package="true" protected="true" private="true" static="true"/>  
   </classifier-display>  

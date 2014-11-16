@@ -1,9 +1,3 @@
-/sprites/
-/movement/
 /entities/
-/level/
-/shoot/
 /entityManager/
-/sound/
-/store/
-/music/
+/level/
