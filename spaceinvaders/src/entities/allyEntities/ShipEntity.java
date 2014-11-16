@@ -39,6 +39,8 @@ public class ShipEntity extends PlayerEntity {
 		shootStrategy = new PlayerSimpleShot();
 		
 		player = new Sound();
+		player.setBuffer(SoundStore.get().getSound("sound/laser1.wav"));
+		player.setVolume(50.0f);
 		
 		bonus = new ArrayList<PlayerEntity>();
 	}
@@ -58,7 +60,6 @@ public class ShipEntity extends PlayerEntity {
 			for (int i = 0; i < shot.size(); i++)
 			{
 				gameScene.getPlayerEntities().add(shot.get(i));
-				player.setBuffer(SoundStore.get().getSound("sound/laser1.wav"));
 				player.play();
 			}
 		}
@@ -104,6 +105,14 @@ public class ShipEntity extends PlayerEntity {
 			powerUp.draw(renderer);
 		}
 	}
-    
-    
+
+	public Sound getPlayer() {
+		return player;
+	}
+
+	public void setShootStrategy(PlayerShootStrategy shootStrategy) {
+		this.shootStrategy = shootStrategy;
+	}
+	
+	
 }

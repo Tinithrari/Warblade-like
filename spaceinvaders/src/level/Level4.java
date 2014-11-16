@@ -58,7 +58,7 @@ public class Level4 extends Level {
 		}
 		
 		if (getNbEnemy() == 0)
-			getGameScene().setLevel(null);
+			getGameScene().setLevel(new Level5(getGameScene()));
 	}
 
 	@Override

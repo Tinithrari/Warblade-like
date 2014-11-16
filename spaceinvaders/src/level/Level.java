@@ -20,6 +20,7 @@ public abstract class Level {
 	public Level(GameScene gameScene) {
 		enemyEntities = new ArrayList<EnemyEntity>();
 		player = new Sound();
+		player.setVolume(50.0f);
 		this.gameScene = gameScene;
 	}
 	

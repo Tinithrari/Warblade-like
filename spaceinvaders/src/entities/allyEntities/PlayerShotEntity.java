@@ -1,5 +1,6 @@
 package entities.allyEntities;
 
+import store.SoundStore;
 import entities.ExplosionEntity;
 import entities.enemyEntities.EnemyEntity;
 import entityManager.GameScene;
@@ -16,6 +17,7 @@ public class PlayerShotEntity extends PlayerEntity {
 	/** The game in which this entity exists */
 	private GameScene gameScene;
 	/** True if this shot has been "used", i.e. its hit something */
+	private int damage;
 	private boolean used = false;
 	
 	/**
@@ -25,10 +27,11 @@ public class PlayerShotEntity extends PlayerEntity {
 	 * @param sprite The sprite representing this shot
 	 * @param strategy TODO
 	 */
-	public PlayerShotEntity(GameScene gameScene,String sprite,Movement strategy) {
+	public PlayerShotEntity(GameScene gameScene,String sprite,Movement strategy, int damage) {
 		super(sprite,strategy);
 		
 		this.gameScene = gameScene;
+		this.damage = damage;
 	}
 
 	/**
@@ -55,17 +58,25 @@ public class PlayerShotEntity extends PlayerEntity {
 		}
 		
 		gameScene.removeEntity(this);
-		gameScene.removeEntity(other);
+		other.setlP(other.getlP() - damage);
 		
-		// notify the game that the alien has been killed
-		if (!other.isNotAMonster())
+		if (other.getlP() <= 0)
 		{
-			gameScene.notifyEnemyKilled();
-			other.drop();
+			// notify the game that the alien has been killed
+			if (!other.isNotAMonster())
+			{
+				gameScene.notifyEnemyKilled();
+				other.drop();
+			}
+			gameScene.getRemoveList().add(other);
+			gameScene.getRemoveList().add(this);
+			used = true;
+		}
+		else
+		{
+			gameScene.getSoundList().add(SoundStore.get().getSound("sound/explosion.wav"));
 		}
 		gameScene.getLevel().getEnemyEntities().add(new ExplosionEntity(gameScene, "sprites/explosion.png", new NoMovement(other.getX() - 60, other.getY() - 60)));
-		used = true;
-		
 	}
 
     @Override

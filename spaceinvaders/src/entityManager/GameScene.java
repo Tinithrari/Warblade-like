@@ -1,15 +1,18 @@
 package entityManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import org.jsfml.audio.Music;
 import org.jsfml.audio.Sound;
 import org.jsfml.audio.SoundBuffer;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.Sprite;
 import org.jsfml.window.Keyboard;
 
+import store.MusicStore;
 import store.SpriteStore;
 import window.Application;
 import level.Level;
@@ -28,6 +31,7 @@ public class GameScene implements Scene {
 	private ArrayList<Entity> removeList = new ArrayList<Entity>();
 	private Queue<SoundBuffer> soundList;
 	private Sound soundReader;
+	private Music musicPlayer;
 	private ShipEntity ship;
 	private Sprite background;
 	
@@ -39,6 +43,17 @@ public class GameScene implements Scene {
 		
 		soundList = new LinkedList<SoundBuffer>();
 		soundReader = new Sound();
+		soundReader.setVolume(50.0f);
+		
+		musicPlayer = new Music();
+		try {
+			musicPlayer.openFromStream(MusicStore.get().getStream("music/level1-4music.ogg"));
+			musicPlayer.setVolume(100);
+			musicPlayer.play();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
 		
 		ship = new ShipEntity(this,"sprites/ship.png",new PlayerMovement(370,500));
 		playerEntities.add(ship);
@@ -71,8 +86,10 @@ public class GameScene implements Scene {
 		{
 			for (int i = 0; i < level.getEnemyEntities().size(); i++)
 			{
-				if (me.collidesWith(level.getEnemyEntities().get(i))) {
-					me.collidedWith(level.getEnemyEntities().get(i));
+				if (me.collidesWith(level.getEnemyEntities().get(i))) 
+				{
+					if (! removeList.contains(level.getEnemyEntities().get(i)))
+						me.collidedWith(level.getEnemyEntities().get(i));
 					if (! removeList.contains(level.getEnemyEntities().get(i)))
 						level.getEnemyEntities().get(i).collidedWith(me);
 				}
@@ -87,6 +104,7 @@ public class GameScene implements Scene {
 		
 		if (removeList.contains(ship) || level == null)
 		{
+			musicPlayer.stop();
 			app.setScene(new MenuScene());
 		}
 	}
@@ -126,6 +144,16 @@ public class GameScene implements Scene {
 			soundReader.play();
 		}
 		soundList.clear();
+	}
+	
+	public void setMusic(String ref) {
+		try {
+			musicPlayer.openFromStream(MusicStore.get().getStream(ref));
+			musicPlayer.play();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void updateLogic() {

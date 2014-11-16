@@ -25,7 +25,7 @@ public class PlayerSimpleShot implements PlayerShootStrategy {
 		ArrayList<PlayerShotEntity> shot = new ArrayList<PlayerShotEntity>();
 		// if we waited long enough, create the shot entity, and record the time.
 		lastFire = System.currentTimeMillis();
-		PlayerShotEntity bullet = new PlayerShotEntity(g,"sprites/shot.png",new PlayerSimpleShotMovement(x+15,y-15));
+		PlayerShotEntity bullet = new PlayerShotEntity(g,"sprites/shot.png",new PlayerSimpleShotMovement(x+15,y-15), 20);
 		shot.add(bullet);
 		return shot;
 

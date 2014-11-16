@@ -6,14 +6,14 @@ import movement.enemyMovement.AlienSimpleShotMovement;
 import entities.enemyEntities.AlienShotEntity;
 import entityManager.GameScene;
 
-public class AlienDoubleShot implements AlienShootStrategy {
+public class BlackShipDoubleShot implements AlienShootStrategy {
 
 	private long lastFire;
 	private int firingInterval;
 	
-	public AlienDoubleShot() {
+	public BlackShipDoubleShot() {
 		lastFire = System.currentTimeMillis();
-		firingInterval = (int) (Math.random() * 10000) + 2000;
+		firingInterval = 333;
 	}
 
 	@Override
@@ -25,9 +25,9 @@ public class AlienDoubleShot implements AlienShootStrategy {
 		ArrayList<AlienShotEntity> shot = new ArrayList<AlienShotEntity>();
 		// if we waited long enough, create the shot entity, and record the time.
 		lastFire = System.currentTimeMillis();
-		AlienShotEntity bullet = new AlienShotEntity(g,"sprites/aliendoubleshot.png",new AlienSimpleShotMovement(x+30,y+30));
+		AlienShotEntity bullet = new AlienShotEntity(g,"sprites/aliendoubleshot.png",new AlienSimpleShotMovement(x+110,y+171));
 		shot.add(bullet);
-		bullet = new AlienShotEntity(g,"sprites/aliendoubleshot.png",new AlienSimpleShotMovement(x-10,y+30));
+		bullet = new AlienShotEntity(g,"sprites/aliendoubleshot.png",new AlienSimpleShotMovement(x+70,y+171));
 		shot.add(bullet);
 		return shot;
 	}

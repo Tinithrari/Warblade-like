@@ -8,20 +8,19 @@ public class CircularMovement extends Movement {
 	
 	public CircularMovement(float x, float y) {
 		super(x, y);
-		setDx(150);
+		setDx(300);
 	}
 
 	@Override
 	public void move(long delta) {
 		if (circle)
 		{
-			float tmpX = getX(); //Distance des x entre l'origine souhaité et le point de notre objet
-			float tmpY = getY(); //Distance des y entre l'origine souhaité et le point de notre objet
+			float tmpX = getX();
+			float tmpY = getY();
 			float resX, resY;
 			
-			// Pour une rotation de 2° par seconde
-			resX = (float) (((tmpX - 400)*Math.cos(0.02) - (tmpY - 200)*Math.sin(0.02)) + 400);
-			resY = (float) (((tmpX - 400)*Math.sin(0.02) + (tmpY - 200)*Math.cos(0.02)) + 200);
+			resX = (float) (((tmpX - 400)*Math.cos(0.04) - (tmpY - 200)*Math.sin(0.04)) + 400);
+			resY = (float) (((tmpX - 400)*Math.sin(0.04) + (tmpY - 200)*Math.cos(0.04)) + 200);
 			
 			//On applique les modifications.
 			setX(resX);
