@@ -1,10 +1,7 @@
-/base/
-/entityManager/
-/shoot/
-/window/
 /sprites/
-/level/
-/entities/
 /movement/
+/entities/
+/level/
+/shoot/
+/entityManager/
 /sound/
-/font/
