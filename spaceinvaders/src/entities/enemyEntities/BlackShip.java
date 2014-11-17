@@ -23,7 +23,7 @@ public class BlackShip extends EnemyEntity {
 		player.setVolume(50.0f);
 		this.gameScene = gameScene;
 		this.attack = attack;
-		this.setlP(1800);
+		this.setlP(2200);
 	}
 
 	@Override
